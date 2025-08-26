@@ -1,11 +1,32 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import HeroQuemSou from '../components/HeroQuemSou.astro';
+import CarrosselPasseios from '../components/CarrosselPasseios.astro';
+import CarrosselPasseiosReceptivo from '../components/CarrosselPasseiosReceptivo.astro';
+import Depoimentos from '../components/Depoimentos.astro';
+import FormularioContato from '../components/FormularioContato.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title="Guia Filippi - Turismo em Gramado e Canela">
+  <Header />
+  
+  <!-- Seção Hero -->
+  <HeroQuemSou />
+  
+  <!-- Seção de Ingressos e Atrações -->
+  <CarrosselPasseios />
+  
+  <!-- Seção de Passeios e Receptivo -->
+  <CarrosselPasseiosReceptivo />
+  
+  <!-- Seção Depoimentos -->
+  <Depoimentos />
+  
+  <!-- Seção Contato -->
+  <FormularioContato />
+  
+  <!-- Footer -->
+  <Footer />
+</BaseLayout>

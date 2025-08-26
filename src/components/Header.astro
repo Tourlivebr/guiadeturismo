@@ -1,0 +1,155 @@
+---
+// Nenhuma lógica do servidor necessária
+---
+
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/20 dark:border-gray-700/20">
+  <div class="container mx-auto px-4">
+    <nav class="flex items-center justify-between h-20 lg:h-24" aria-label="Navegação principal">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-2 group" aria-label="Página inicial">
+        <img 
+          src="/images/logo uber.png" 
+          alt="Guia Filippi" 
+          class="h-14 w-auto lg:h-18 transition-transform group-hover:scale-105 object-contain"
+          width="120"
+          height="40"
+        />
+      </a>
+      
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex items-center space-x-8" role="menubar">
+        <li role="none">
+          <a 
+            href="#quem-sou" 
+            class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200 scroll-smooth"
+            role="menuitem"
+          >
+            Quem sou
+          </a>
+        </li>
+        <li role="none">
+          <a 
+            href="#servicos" 
+            class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200 scroll-smooth"
+            role="menuitem"
+          >
+            Serviços
+          </a>
+        </li>
+        <li role="none">
+          <a 
+            href="#depoimentos" 
+            class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200 scroll-smooth"
+            role="menuitem"
+          >
+            Depoimentos
+          </a>
+        </li>
+        <li role="none">
+          <a 
+            href="#contato" 
+            class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200 scroll-smooth"
+            role="menuitem"
+          >
+            Contato
+          </a>
+        </li>
+      </ul>
+      
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-button"
+        class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+        aria-label="Abrir menu de navegação"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-200">
+      <div class="px-4 py-4 space-y-4">
+        <a href="/#quem-sou" class="block text-gray-700 hover:text-blue-600 transition-colors font-medium">Quem sou</a>
+        <a href="/servicos" class="block text-gray-700 hover:text-blue-600 transition-colors font-medium">Serviços</a>
+        <a href="/#depoimentos" class="block text-gray-700 hover:text-blue-600 transition-colors font-medium">Depoimentos</a>
+        <a href="/#contato" class="block text-gray-700 hover:text-blue-600 transition-colors font-medium">Contato</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Header scroll behavior
+  const header = document.getElementById('header');
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+  
+  let isMenuOpen = false;
+  
+  // Scroll behavior
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+  
+  // Mobile menu toggle
+  mobileMenuButton?.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen;
+    
+    if (isMenuOpen) {
+      mobileMenu?.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+      mobileMenu?.classList.add('translate-y-0', 'opacity-100');
+      mobileMenuButton?.setAttribute('aria-expanded', 'true');
+    } else {
+      mobileMenu?.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+      mobileMenu?.classList.remove('translate-y-0', 'opacity-100');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+    }
+  });
+  
+  // Close mobile menu when clicking on links
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      isMenuOpen = false;
+      mobileMenu?.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+      mobileMenu?.classList.remove('translate-y-0', 'opacity-100');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+    });
+  });
+  
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    
+    // Verificação mais segura
+    const href = this instanceof HTMLElement ? this.getAttribute('href') : null;
+    const target = href ? document.querySelector(href) : null;
+    
+    if (target) {
+      const headerElement = document.getElementById('header');
+      const headerHeight = headerElement?.offsetHeight || 0;
+      const targetPosition = target.offsetTop - headerHeight - 20;
+      
+      window.scrollTo({
+        top: Math.max(0, targetPosition),
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+</script>
+
+<style>
+  .scrolled {
+    @apply h-16 lg:h-20;
+  }
+</style>

@@ -1,0 +1,392 @@
+---
+// Dados dos passeios e receptivo baseados na imagem
+const passeiosReceptivo = [
+  {
+    id: 1,
+    title: "Tour O Quatrilho",
+    subtitle: "Passeio Rural Com Almoço Típico",
+    category: "PASSEIOS",
+    image: "/images/cristais_de_gramado_o_inquestionavel.jpg",
+    rating: 4.81,
+    totalRatings: 36,
+    price: 28.17,
+    installments: "6x sem juros",
+    tags: ["Almoço típico com receitas locais", "História do filme 'O Quatrilho'", "Tour por vilas históricas"]
+  },
+  {
+    id: 2,
+    title: "Tour Trem e Vinho - Com Trem Maria Fumaça e Épopeia...",
+    subtitle: "Com Trem Maria Fumaça e Épopeia",
+    category: "PASSEIOS",
+    image: "/images/grupo-dreams-passaporte.jpg",
+    rating: 4.93,
+    totalRatings: 218,
+    price: 61.50,
+    installments: "6x sem juros",
+    tags: ["Caminhada pelo Parque Epopéia", "Degustação de vinhos e sucos", "Apresentações culturais"]
+  },
+  {
+    id: 3,
+    title: "Tour Raízes Coloniais",
+    subtitle: "Passeio Rural Com Café Colonial",
+    category: "PASSEIOS",
+    image: "/images/gramado_selfie_.webp",
+    rating: 4.73,
+    totalRatings: 40,
+    price: 24.99,
+    installments: "6x sem juros",
+    tags: ["Passeio cultural e emocional", "Café colonial autêntico e animado", "Conheça o processo do chimarrão"]
+  },
+  {
+    id: 4,
+    title: "Tour Linha Ávila",
+    subtitle: "Passeio Rural com Costelão na Vala tradicional",
+    category: "PASSEIOS",
+    image: "/images/terra-magica-florybal.webp",
+    rating: 4.89,
+    totalRatings: 55,
+    price: 33.17,
+    installments: "6x sem juros",
+    tags: ["Costelão na vala tradicional", "Degustação de vinhos artesanais", "História das famílias locais"]
+  }
+];
+---
+
+<section id="passeios-receptivo" class="py-16 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
+  <div class="container mx-auto px-4">
+    <!-- Header da Seção -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        Passeios e Receptivo
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        Descubra experiências autênticas e inesquecíveis na região colonial
+      </p>
+    </div>
+
+    <!-- Filtros e Ordenação -->
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+      <div class="flex flex-wrap gap-2">
+        <button class="px-4 py-2 bg-primary-600 text-white rounded-full text-sm font-medium hover:bg-primary-700 transition-colors">
+          Todos
+        </button>
+        <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition-colors dark:bg-gray-700 dark:text-gray-300">
+          Passeios Rurais
+        </button>
+        <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition-colors dark:bg-gray-700 dark:text-gray-300">
+          Gastronomia
+        </button>
+      </div>
+      
+      <select class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+        <option>Ordenar por: Relevância</option>
+        <option>Menor preço</option>
+        <option>Maior preço</option>
+        <option>Melhor avaliação</option>
+      </select>
+    </div>
+
+    <!-- Carrossel Container -->
+    <div class="relative">
+      <!-- Carrossel -->
+      <div id="carousel-passeios-receptivo" class="overflow-hidden">
+        <div id="carousel-track-passeios-receptivo" class="flex transition-transform duration-500 ease-in-out gap-6">
+          {passeiosReceptivo.map((passeio) => (
+            <div class="flex-none w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
+              <!-- Card -->
+              <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group h-full flex flex-col">
+                <!-- Imagem -->
+                <div class="relative h-24 sm:h-32 md:h-36 lg:h-40 overflow-hidden">
+                  <img 
+                    src={passeio.image} 
+                    alt={passeio.title}
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div class="absolute top-3 left-3">
+                    <span class="bg-primary-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                      {passeio.category}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Conteúdo -->
+                <div class="p-3 sm:p-4 lg:p-6 flex-1 flex flex-col">
+                  <!-- Título e Subtítulo -->
+                  <div class="mb-3">
+                    <h3 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base lg:text-lg mb-1 line-clamp-2 group-hover:text-primary-600 transition-colors">
+                      {passeio.title}
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm line-clamp-1">
+                      {passeio.subtitle}
+                    </p>
+                  </div>
+
+                  <!-- Rating -->
+                  <div class="flex items-center gap-2 mb-3">
+                    <div class="flex items-center">
+                      {Array.from({ length: 5 }, (_, i) => (
+                        <svg 
+                          class={`w-3 h-3 sm:w-4 sm:h-4 ${i < Math.floor(passeio.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
+                          fill="currentColor" 
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <span class="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {passeio.rating} ({passeio.totalRatings} avaliações)
+                    </span>
+                  </div>
+
+                  <!-- Tags -->
+                  <div class="mb-4 flex-1">
+                    <div class="flex flex-wrap gap-1 mb-2">
+                      {passeio.tags.slice(0, 2).map((tag) => (
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded-full text-xs truncate max-w-[120px]">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <!-- Preço e Botão -->
+                  <div class="mt-auto">
+                    <div class="flex items-center justify-between mb-3">
+                      <div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">A partir de</p>
+                        <p class="text-lg sm:text-xl font-bold text-primary-600">
+                          R$ {passeio.price.toFixed(2).replace('.', ',')}
+                        </p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                          Pague em até {passeio.installments}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 sm:py-3 px-4 rounded-lg transition-colors text-xs sm:text-sm flex items-center justify-center gap-2">
+                      <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                      </svg>
+                      COMPRAR AGORA
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Botões de Navegação (Desktop) -->
+      <button 
+        id="prev-btn-passeios-receptivo"
+        class="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white dark:bg-gray-800 shadow-lg rounded-full p-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors z-10"
+        aria-label="Anterior"
+      >
+        <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <button 
+        id="next-btn-passeios-receptivo"
+        class="hidden sm:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white dark:bg-gray-800 shadow-lg rounded-full p-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors z-10"
+        aria-label="Próximo"
+      >
+        <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Indicadores -->
+    <div id="indicators-passeios-receptivo" class="flex justify-center mt-8 gap-2">
+      <!-- Indicadores serão gerados pelo JavaScript -->
+    </div>
+  </div>
+</section>
+
+<script>
+  // Configuração do carrossel de passeios e receptivo
+  const carouselTrack = document.getElementById('carousel-track-passeios-receptivo');
+  const prevBtn = document.getElementById('prev-btn-passeios-receptivo');
+  const nextBtn = document.getElementById('next-btn-passeios-receptivo');
+  const indicatorsContainer = document.getElementById('indicators-passeios-receptivo');
+  
+  let currentSlide = 0;
+  let isTransitioning = false;
+  
+  // Função para obter slides por visualização
+  function getSlidesPerView() {
+    if (window.innerWidth >= 1280) return 4; // xl
+    if (window.innerWidth >= 1024) return 3; // lg
+    if (window.innerWidth >= 640) return 2;  // sm
+    return 1; // mobile
+  }
+  
+  const totalSlides = 4; // Total de passeios
+  let slidesPerView = getSlidesPerView();
+  let maxSlide = Math.max(0, totalSlides - slidesPerView);
+  
+  // Criar indicadores
+  function createIndicators() {
+    indicatorsContainer.innerHTML = '';
+    const totalIndicators = maxSlide + 1;
+    
+    for (let i = 0; i <= maxSlide; i++) {
+      const indicator = document.createElement('button');
+      indicator.className = `w-2 h-2 rounded-full transition-colors ${
+        i === currentSlide ? 'bg-primary-600' : 'bg-gray-300 dark:bg-gray-600'
+      }`;
+      indicator.addEventListener('click', () => goToSlide(i));
+      indicatorsContainer.appendChild(indicator);
+    }
+  }
+  
+  // Atualizar carrossel
+  function updateCarousel() {
+    if (!carouselTrack) return;
+    
+    const slideWidth = 100 / slidesPerView;
+    const translateX = -currentSlide * slideWidth;
+    carouselTrack.style.transform = `translateX(${translateX}%)`;
+    
+    // Atualizar indicadores
+    const indicators = indicatorsContainer.querySelectorAll('button');
+    indicators.forEach((indicator, index) => {
+      indicator.className = `w-2 h-2 rounded-full transition-colors ${
+        index === currentSlide ? 'bg-primary-600' : 'bg-gray-300 dark:bg-gray-600'
+      }`;
+    });
+  }
+  
+  // Próximo slide
+  function nextSlide() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    
+    currentSlide = currentSlide >= maxSlide ? 0 : currentSlide + 1;
+    updateCarousel();
+    
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 500);
+  }
+  
+  // Slide anterior
+  function prevSlide() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    
+    currentSlide = currentSlide <= 0 ? maxSlide : currentSlide - 1;
+    updateCarousel();
+    
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 500);
+  }
+  
+  // Ir para slide específico
+  function goToSlide(slideIndex) {
+    if (isTransitioning || slideIndex === currentSlide) return;
+    isTransitioning = true;
+    
+    currentSlide = slideIndex;
+    updateCarousel();
+    
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 500);
+  }
+  
+  // Event listeners
+  nextBtn?.addEventListener('click', nextSlide);
+  prevBtn?.addEventListener('click', prevSlide);
+  
+  // Touch/Swipe functionality para mobile
+  let startX = 0;
+  let currentX = 0;
+  let isDragging = false;
+  
+  carouselTrack?.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+  
+  carouselTrack?.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    currentX = e.touches[0].clientX;
+  });
+  
+  carouselTrack?.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    
+    const diffX = startX - currentX;
+    const threshold = 50;
+    
+    if (Math.abs(diffX) > threshold) {
+      if (diffX > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+  });
+  
+  // Resize handler
+  window.addEventListener('resize', () => {
+    const newSlidesPerView = getSlidesPerView();
+    if (newSlidesPerView !== slidesPerView) {
+      slidesPerView = newSlidesPerView;
+      maxSlide = Math.max(0, totalSlides - slidesPerView);
+      currentSlide = Math.min(currentSlide, maxSlide);
+      createIndicators();
+      updateCarousel();
+    }
+  });
+  
+  // Auto-play (opcional)
+  let autoPlayInterval;
+  
+  function startAutoPlay() {
+    autoPlayInterval = setInterval(() => {
+      if (!isDragging && !isTransitioning) {
+        nextSlide();
+      }
+    }, 5000);
+  }
+  
+  function stopAutoPlay() {
+    clearInterval(autoPlayInterval);
+  }
+  
+  // Inicializar
+  createIndicators();
+  updateCarousel();
+  
+  // Iniciar auto-play
+  startAutoPlay();
+  
+  // Pausar auto-play quando hover (desktop)
+  carouselTrack?.addEventListener('mouseenter', stopAutoPlay);
+  carouselTrack?.addEventListener('mouseleave', startAutoPlay);
+</script>
+
+<style>
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
