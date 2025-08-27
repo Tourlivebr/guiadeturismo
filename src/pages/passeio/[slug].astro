@@ -4,6 +4,14 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import StarRating from '../../components/StarRating.astro';
 
+// Função necessária para modo estático
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'tour-o-quatrilho' } },
+    { params: { slug: 'tour-trem-vinho' } }
+  ];
+}
+
 // Dados dos passeios
 const passeiosData = {
   'tour-o-quatrilho': {
