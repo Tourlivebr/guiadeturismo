@@ -67,6 +67,40 @@ const passeios = [
       "Cachoeiras e natureza preservada",
       "Trilhas mágicas e temáticas"
     ]
+  },
+  {
+    id: 5,
+    titulo: "Parque Vila da Mônica",
+    subtitulo: "Ingresso",
+    categoria: "INGRESSOS E ATRAÇÕES",
+    imagem: "/images/parque-vila-monica.jpg",
+    avaliacao: 4.14,
+    totalAvaliacoes: 7,
+    preco: 21.50,
+    parcelas: 6,
+    slug: "parque-vila-da-monica",
+    tags: [
+      "Diversão para toda a família",
+      "Encontro com personagens famosos",
+      "Ambiente seguro e inclusivo"
+    ]
+  },
+  {
+    id: 6,
+    titulo: "Parque Space Adventure I",
+    subtitulo: "Ingresso",
+    categoria: "INGRESSOS E ATRAÇÕES",
+    imagem: "/images/space-adventure.jpg",
+    avaliacao: 4.00,
+    totalAvaliacoes: 6,
+    preco: 21.58,
+    parcelas: 6,
+    slug: "parque-space-adventure",
+    tags: [
+      "Acesso limitado a 15 atrações",
+      "Show de patinação artística",
+      "Patinação no gelo inclusa"
+    ]
   }
   // Adicione novos passeios aqui seguindo a mesma estrutura
 ];
@@ -173,7 +207,7 @@ const passeios = [
                 </div>
                 
                 <a 
-                  href={`/${passeio.titulo.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}
+                  href={`/${passeio.slug}`}
                   class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 block text-center"
                 >
                   COMPRAR AGORA

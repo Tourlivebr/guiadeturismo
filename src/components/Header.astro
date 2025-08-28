@@ -7,28 +7,32 @@ const todosPasseios = [
     titulo: "Cristais de Gramado",
     subtitulo: "Ingresso",
     categoria: "INGRESSOS E ATRAÇÕES",
-    tipo: "ingressos"
+    tipo: "ingressos",
+    slug: "cristais-de-gramado"
   },
   {
     id: 2,
     titulo: "Grupo Dreams",
     subtitulo: "Passaporte para 7 Atrações",
     categoria: "INGRESSOS E ATRAÇÕES",
-    tipo: "ingressos"
+    tipo: "ingressos",
+    slug: "grupo-dreams"
   },
   {
     id: 3,
     titulo: "Ingresso Selfie Gramado",
     subtitulo: "Cenários Instagramáveis",
     categoria: "INGRESSOS E ATRAÇÕES",
-    tipo: "ingressos"
+    tipo: "ingressos",
+    slug: "selfie-gramado"
   },
   {
     id: 4,
-    titulo: "Terra Mágica Florybal",
+    titulo: "Parque Terra Mágica Florybal",
     subtitulo: "Parque Temático",
     categoria: "INGRESSOS E ATRAÇÕES",
-    tipo: "ingressos"
+    tipo: "ingressos",
+    slug: "terra-magica-florybal"
   },
   // Passeios e Receptivo
   {
@@ -36,28 +40,40 @@ const todosPasseios = [
     titulo: "Tour O Quatrilho",
     subtitulo: "Passeio Rural Com Almoço Típico",
     categoria: "PASSEIOS",
-    tipo: "passeios"
+    tipo: "passeios",
+    slug: "tour-o-quatrilho"
   },
   {
     id: 6,
     titulo: "Tour Trem e Vinho",
     subtitulo: "Com Trem Maria Fumaça e Épopeia",
     categoria: "PASSEIOS",
-    tipo: "passeios"
+    tipo: "passeios",
+    slug: "tour-trem-vinho"
   },
   {
     id: 7,
     titulo: "Tour Raízes Coloniais",
     subtitulo: "Passeio Rural Com Café Colonial",
     categoria: "PASSEIOS",
-    tipo: "passeios"
+    tipo: "passeios",
+    slug: "tour-raizes-coloniais"
   },
   {
     id: 8,
     titulo: "Tour Linha Ávila",
     subtitulo: "Passeio Rural com Costelão na Vala tradicional",
     categoria: "PASSEIOS",
-    tipo: "passeios"
+    tipo: "passeios",
+    slug: "tour-linha-avila"
+  },
+  {
+    id: 9,
+    titulo: "Parque Space Adventure I",
+    subtitulo: "Parque Temático",
+    categoria: "INGRESSOS E ATRAÇÕES",
+    tipo: "ingressos",
+    slug: "parque-space-adventure"
   }
 ];
 ---
@@ -268,13 +284,16 @@ const todosPasseios = [
         </div>
       `;
     } else {
-      resultsContainer.innerHTML = filteredPasseios.map(passeio => `
-        <a href="#${passeio.tipo}" class="block p-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0">
-          <div class="font-medium text-gray-800">${passeio.titulo}</div>
-          <div class="text-sm text-gray-600">${passeio.subtitulo}</div>
-          <div class="text-xs text-blue-600 mt-1">${passeio.categoria}</div>
-        </a>
-      `).join('');
+      resultsContainer.innerHTML = filteredPasseios.map(passeio => {
+        const href = passeio.tipo === 'ingressos' ? `/${passeio.slug}` : `/passeio/${passeio.slug}`;
+        return `
+          <a href="${href}" class="block p-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0">
+            <div class="font-medium text-gray-800">${passeio.titulo}</div>
+            <div class="text-sm text-gray-600">${passeio.subtitulo}</div>
+            <div class="text-xs text-blue-600 mt-1">${passeio.categoria}</div>
+          </a>
+        `;
+      }).join('');
     }
     
     resultsContainer.classList.remove('hidden');

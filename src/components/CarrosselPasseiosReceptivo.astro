@@ -169,12 +169,15 @@ const passeiosReceptivo = [
                       </div>
                     </div>
                     
-                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+                    <a 
+                      href={passeio.id === 1 ? '/passeio/tour-o-quatrilho' : passeio.id === 2 ? '/passeio/tour-trem-vinho' : '#'}
+                      class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                    >
                       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                       </svg>
                       COMPRAR AGORA
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
