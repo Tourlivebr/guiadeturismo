@@ -49,6 +49,7 @@ const passeiosReceptivo = [
     installments: "6x sem juros",
     tags: ["Costelão na vala tradicional", "Degustação de vinhos artesanais", "História das famílias locais"]
   }
+  // Adicione novos passeios aqui seguindo a mesma estrutura
 ];
 ---
 
@@ -89,14 +90,14 @@ const passeiosReceptivo = [
     <!-- Carrossel Container -->
     <div class="relative">
       <!-- Carrossel -->
-      <div id="carousel-passeios-receptivo" class="overflow-hidden">
-        <div id="carousel-track-passeios-receptivo" class="flex transition-transform duration-500 ease-in-out gap-6">
+      <div class="overflow-hidden">
+        <div id="carousel-track-passeios-receptivo" class="flex transition-transform duration-500 ease-in-out">
           {passeiosReceptivo.map((passeio) => (
-            <div class="flex-none w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
+            <div class="flex-none w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 px-3">
               <!-- Card -->
               <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group h-full flex flex-col">
                 <!-- Imagem -->
-                <div class="relative h-24 sm:h-32 md:h-36 lg:h-40 overflow-hidden">
+                <div class="relative h-48 overflow-hidden">
                   <img 
                     src={passeio.image} 
                     alt={passeio.title}
@@ -111,23 +112,23 @@ const passeiosReceptivo = [
                 </div>
 
                 <!-- Conteúdo -->
-                <div class="p-3 sm:p-4 lg:p-6 flex-1 flex flex-col">
+                <div class="p-6 flex-1 flex flex-col">
                   <!-- Título e Subtítulo -->
                   <div class="mb-3">
-                    <h3 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base lg:text-lg mb-1 line-clamp-2 group-hover:text-primary-600 transition-colors">
+                    <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-1 group-hover:text-primary-600 transition-colors">
                       {passeio.title}
                     </h3>
-                    <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm line-clamp-1">
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
                       {passeio.subtitle}
                     </p>
                   </div>
 
                   <!-- Rating -->
-                  <div class="flex items-center gap-2 mb-3">
+                  <div class="flex items-center gap-2 mb-4">
                     <div class="flex items-center">
                       {Array.from({ length: 5 }, (_, i) => (
                         <svg 
-                          class={`w-3 h-3 sm:w-4 sm:h-4 ${i < Math.floor(passeio.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
+                          class={`w-4 h-4 ${i < Math.floor(passeio.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
                           fill="currentColor" 
                           viewBox="0 0 20 20"
                         >
@@ -135,28 +136,31 @@ const passeiosReceptivo = [
                         </svg>
                       ))}
                     </div>
-                    <span class="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
                       {passeio.rating} ({passeio.totalRatings} avaliações)
                     </span>
                   </div>
 
                   <!-- Tags -->
-                  <div class="mb-4 flex-1">
-                    <div class="flex flex-wrap gap-1 mb-2">
-                      {passeio.tags.slice(0, 2).map((tag) => (
-                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded-full text-xs truncate max-w-[120px]">
+                  <div class="mb-6 flex-1">
+                    <div class="space-y-2">
+                      {passeio.tags.map((tag) => (
+                        <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                          <svg class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
                           {tag}
-                        </span>
+                        </div>
                       ))}
                     </div>
                   </div>
 
                   <!-- Preço e Botão -->
                   <div class="mt-auto">
-                    <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center justify-between mb-4">
                       <div>
-                        <p class="text-xs text-gray-500 dark:text-gray-400">A partir de</p>
-                        <p class="text-lg sm:text-xl font-bold text-primary-600">
+                        <p class="text-sm text-gray-500 dark:text-gray-400">A partir de</p>
+                        <p class="text-2xl font-bold text-primary-600">
                           R$ {passeio.price.toFixed(2).replace('.', ',')}
                         </p>
                         <p class="text-xs text-gray-500 dark:text-gray-400">
@@ -165,8 +169,8 @@ const passeiosReceptivo = [
                       </div>
                     </div>
                     
-                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 sm:py-3 px-4 rounded-lg transition-colors text-xs sm:text-sm flex items-center justify-center gap-2">
-                      <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                       </svg>
                       COMPRAR AGORA
@@ -179,7 +183,7 @@ const passeiosReceptivo = [
         </div>
       </div>
 
-      <!-- Botões de Navegação (Desktop) -->
+      <!-- Botões de Navegação -->
       <button 
         id="prev-btn-passeios-receptivo"
         class="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white dark:bg-gray-800 shadow-lg rounded-full p-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors z-10"
@@ -203,190 +207,139 @@ const passeiosReceptivo = [
 
     <!-- Indicadores -->
     <div id="indicators-passeios-receptivo" class="flex justify-center mt-8 gap-2">
-      <!-- Indicadores serão gerados pelo JavaScript -->
+      <!-- Indicadores serão gerados dinamicamente pelo JavaScript -->
     </div>
   </div>
 </section>
 
 <script>
-  // Configuração do carrossel de passeios e receptivo
+  // Código simplificado do carrossel de passeios e receptivo
+  let currentSlide = 0;
   const carouselTrack = document.getElementById('carousel-track-passeios-receptivo');
   const prevBtn = document.getElementById('prev-btn-passeios-receptivo');
   const nextBtn = document.getElementById('next-btn-passeios-receptivo');
   const indicatorsContainer = document.getElementById('indicators-passeios-receptivo');
   
-  let currentSlide = 0;
-  let isTransitioning = false;
+  // Obter número total de passeios dinamicamente
+  const totalItems = carouselTrack.children.length;
   
-  // Função para obter slides por visualização
+  // Calcular slides por visualização baseado na tela
   function getSlidesPerView() {
-    if (window.innerWidth >= 1280) return 4; // xl
-    if (window.innerWidth >= 1024) return 3; // lg
-    if (window.innerWidth >= 640) return 2;  // sm
-    return 1; // mobile
+    const width = window.innerWidth;
+    if (width >= 1280) return 4; // xl: 4 cards
+    if (width >= 1024) return 3; // lg: 3 cards
+    if (width >= 640) return 2;  // sm: 2 cards
+    return 1; // mobile: 1 card
   }
   
-  const totalSlides = 4; // Total de passeios
-  let slidesPerView = getSlidesPerView();
-  let maxSlide = Math.max(0, totalSlides - slidesPerView);
+  // Calcular total de slides necessários
+  function getTotalSlides() {
+    const slidesPerView = getSlidesPerView();
+    return Math.max(1, Math.ceil(totalItems - slidesPerView + 1));
+  }
   
-  // Criar indicadores
-  function createIndicators() {
-    indicatorsContainer.innerHTML = '';
-    const totalIndicators = maxSlide + 1;
+  // Atualizar posição do carrossel
+  function updateCarousel() {
+    const slidesPerView = getSlidesPerView();
+    const slideWidth = 100 / slidesPerView;
+    const translateX = -currentSlide * slideWidth;
     
-    for (let i = 0; i <= maxSlide; i++) {
+    carouselTrack.style.transform = `translateX(${translateX}%)`;
+    updateIndicators();
+  }
+  
+  // Atualizar indicadores
+  function updateIndicators() {
+    const totalSlides = getTotalSlides();
+    
+    // Limpar indicadores existentes
+    indicatorsContainer.innerHTML = '';
+    
+    // Criar novos indicadores
+    for (let i = 0; i < totalSlides; i++) {
       const indicator = document.createElement('button');
-      indicator.className = `w-2 h-2 rounded-full transition-colors ${
+      indicator.className = `w-3 h-3 rounded-full transition-colors ${
         i === currentSlide ? 'bg-primary-600' : 'bg-gray-300 dark:bg-gray-600'
       }`;
-      indicator.addEventListener('click', () => goToSlide(i));
+      indicator.addEventListener('click', () => {
+        currentSlide = i;
+        updateCarousel();
+      });
       indicatorsContainer.appendChild(indicator);
     }
   }
   
-  // Atualizar carrossel
-  function updateCarousel() {
-    if (!carouselTrack) return;
-    
-    const slideWidth = 100 / slidesPerView;
-    const translateX = -currentSlide * slideWidth;
-    carouselTrack.style.transform = `translateX(${translateX}%)`;
-    
-    // Atualizar indicadores
-    const indicators = indicatorsContainer.querySelectorAll('button');
-    indicators.forEach((indicator, index) => {
-      indicator.className = `w-2 h-2 rounded-full transition-colors ${
-        index === currentSlide ? 'bg-primary-600' : 'bg-gray-300 dark:bg-gray-600'
-      }`;
-    });
-  }
-  
   // Próximo slide
   function nextSlide() {
-    if (isTransitioning) return;
-    isTransitioning = true;
-    
-    currentSlide = currentSlide >= maxSlide ? 0 : currentSlide + 1;
+    const totalSlides = getTotalSlides();
+    currentSlide = (currentSlide + 1) % totalSlides;
     updateCarousel();
-    
-    setTimeout(() => {
-      isTransitioning = false;
-    }, 500);
   }
   
   // Slide anterior
   function prevSlide() {
-    if (isTransitioning) return;
-    isTransitioning = true;
-    
-    currentSlide = currentSlide <= 0 ? maxSlide : currentSlide - 1;
+    const totalSlides = getTotalSlides();
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
     updateCarousel();
-    
-    setTimeout(() => {
-      isTransitioning = false;
-    }, 500);
-  }
-  
-  // Ir para slide específico
-  function goToSlide(slideIndex) {
-    if (isTransitioning || slideIndex === currentSlide) return;
-    isTransitioning = true;
-    
-    currentSlide = slideIndex;
-    updateCarousel();
-    
-    setTimeout(() => {
-      isTransitioning = false;
-    }, 500);
   }
   
   // Event listeners
   nextBtn?.addEventListener('click', nextSlide);
   prevBtn?.addEventListener('click', prevSlide);
   
-  // Touch/Swipe functionality para mobile
+  // Suporte a touch/swipe no mobile
   let startX = 0;
-  let currentX = 0;
   let isDragging = false;
   
-  carouselTrack?.addEventListener('touchstart', (e) => {
+  carouselTrack.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
     isDragging = true;
   });
   
-  carouselTrack?.addEventListener('touchmove', (e) => {
+  carouselTrack.addEventListener('touchend', (e) => {
     if (!isDragging) return;
-    currentX = e.touches[0].clientX;
-  });
-  
-  carouselTrack?.addEventListener('touchend', () => {
-    if (!isDragging) return;
-    isDragging = false;
     
-    const diffX = startX - currentX;
-    const threshold = 50;
+    const endX = e.changedTouches[0].clientX;
+    const diffX = startX - endX;
     
-    if (Math.abs(diffX) > threshold) {
+    // Se o movimento foi significativo (mais de 50px)
+    if (Math.abs(diffX) > 50) {
       if (diffX > 0) {
-        nextSlide();
+        nextSlide(); // Swipe para esquerda = próximo
       } else {
-        prevSlide();
+        prevSlide(); // Swipe para direita = anterior
       }
     }
-  });
-  
-  // Resize handler
-  window.addEventListener('resize', () => {
-    const newSlidesPerView = getSlidesPerView();
-    if (newSlidesPerView !== slidesPerView) {
-      slidesPerView = newSlidesPerView;
-      maxSlide = Math.max(0, totalSlides - slidesPerView);
-      currentSlide = Math.min(currentSlide, maxSlide);
-      createIndicators();
-      updateCarousel();
-    }
+    
+    isDragging = false;
   });
   
   // Auto-play (opcional)
   let autoPlayInterval;
   
   function startAutoPlay() {
-    autoPlayInterval = setInterval(() => {
-      if (!isDragging && !isTransitioning) {
-        nextSlide();
-      }
-    }, 5000);
+    autoPlayInterval = setInterval(nextSlide, 5000);
   }
   
   function stopAutoPlay() {
     clearInterval(autoPlayInterval);
   }
   
-  // Inicializar
-  createIndicators();
+  // Pausar auto-play durante interação
+  carouselTrack.addEventListener('mouseenter', stopAutoPlay);
+  carouselTrack.addEventListener('mouseleave', startAutoPlay);
+  carouselTrack.addEventListener('touchstart', stopAutoPlay);
+  carouselTrack.addEventListener('touchend', () => {
+    setTimeout(startAutoPlay, 3000);
+  });
+  
+  // Atualizar no redimensionamento da tela
+  window.addEventListener('resize', () => {
+    currentSlide = 0; // Reset para o primeiro slide
+    updateCarousel();
+  });
+  
+  // Inicializar carrossel
   updateCarousel();
-  
-  // Iniciar auto-play
   startAutoPlay();
-  
-  // Pausar auto-play quando hover (desktop)
-  carouselTrack?.addEventListener('mouseenter', stopAutoPlay);
-  carouselTrack?.addEventListener('mouseleave', startAutoPlay);
 </script>
-
-<style>
-  .line-clamp-1 {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>

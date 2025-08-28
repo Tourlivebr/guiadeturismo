@@ -68,6 +68,7 @@ const passeios = [
       "Trilhas mágicas e temáticas"
     ]
   }
+  // Adicione novos passeios aqui seguindo a mesma estrutura
 ];
 ---
 
@@ -184,7 +185,7 @@ const passeios = [
       ))}
     </div>
 
-    <!-- Controles de navegação - ocultos no mobile -->
+    <!-- Controles de navegação -->
     <button 
       id="prev-btn"
       class="absolute left-4 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 shadow-lg rounded-full p-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors z-10 hidden sm:block"
@@ -206,55 +207,54 @@ const passeios = [
 
   <!-- Indicadores -->
   <div class="flex justify-center mt-8 space-x-2" id="indicators">
-    {Array.from({ length: Math.ceil(passeios.length / 4) }, (_, i) => (
-      <button 
-        class={`w-3 h-3 rounded-full transition-colors ${
-          i === 0 ? 'bg-primary-600' : 'bg-gray-300 dark:bg-gray-600'
-        }`}
-        data-slide={i}
-      ></button>
-    ))}
+    <!-- Os indicadores serão gerados dinamicamente pelo JavaScript -->
   </div>
 </section>
 
 <script>
-  // Funcionalidade do carrossel
+  // Código simplificado do carrossel
   let currentSlide = 0;
   const container = document.getElementById('carousel-container');
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
-  const indicators = document.querySelectorAll('#indicators button');
+  const indicatorsContainer = document.getElementById('indicators');
   
-  // Variáveis para touch/swipe
-  let startX = 0;
-  let currentX = 0;
-  let isDragging = false;
-  let startTime = 0;
+  // Obter número total de passeios dinamicamente
+  const totalItems = container.children.length;
   
-  // Calcular quantos slides cabem na tela
+  // Calcular slides por visualização baseado na tela
   function getSlidesPerView() {
     const width = window.innerWidth;
-    if (width >= 1280) return 4; // xl
-    if (width >= 1024) return 3; // lg
-    if (width >= 640) return 2;  // sm
-    return 1; // mobile
+    if (width >= 1280) return 4; // xl: 4 cards
+    if (width >= 1024) return 3; // lg: 3 cards
+    if (width >= 640) return 2;  // sm: 2 cards
+    return 1; // mobile: 1 card
   }
   
+  // Calcular total de slides necessários
   function getTotalSlides() {
-    return Math.ceil(8 / getSlidesPerView());
+    const slidesPerView = getSlidesPerView();
+    return Math.max(1, Math.ceil(totalItems - slidesPerView + 1));
   }
   
+  // Atualizar posição do carrossel
   function updateCarousel() {
     const slidesPerView = getSlidesPerView();
-    const totalSlides = getTotalSlides();
     const slideWidth = 100 / slidesPerView;
     const translateX = -currentSlide * slideWidth;
-    container.style.transform = `translateX(${translateX}%)`;
     
-    // Atualizar indicadores dinamicamente
-    const indicatorsContainer = document.getElementById('indicators');
+    container.style.transform = `translateX(${translateX}%)`;
+    updateIndicators();
+  }
+  
+  // Atualizar indicadores
+  function updateIndicators() {
+    const totalSlides = getTotalSlides();
+    
+    // Limpar indicadores existentes
     indicatorsContainer.innerHTML = '';
     
+    // Criar novos indicadores
     for (let i = 0; i < totalSlides; i++) {
       const indicator = document.createElement('button');
       indicator.className = `w-3 h-3 rounded-full transition-colors ${
@@ -268,92 +268,56 @@ const passeios = [
     }
   }
   
+  // Próximo slide
   function nextSlide() {
     const totalSlides = getTotalSlides();
     currentSlide = (currentSlide + 1) % totalSlides;
     updateCarousel();
   }
   
+  // Slide anterior
   function prevSlide() {
     const totalSlides = getTotalSlides();
     currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
     updateCarousel();
   }
   
-  // Touch/Swipe handlers
-  function handleTouchStart(e) {
-    startX = e.touches[0].clientX;
-    startTime = Date.now();
-    isDragging = true;
-    container.style.transition = 'none';
-  }
-  
-  function handleTouchMove(e) {
-    if (!isDragging) return;
-    
-    currentX = e.touches[0].clientX;
-    const diffX = currentX - startX;
-    const containerWidth = container.offsetWidth;
-    const slideWidth = containerWidth / getSlidesPerView();
-    
-    // Calcular o deslocamento baseado no movimento do dedo
-    const currentTranslate = -currentSlide * (100 / getSlidesPerView());
-    const movePercent = (diffX / slideWidth) * (100 / getSlidesPerView());
-    
-    container.style.transform = `translateX(${currentTranslate + movePercent}%)`;
-  }
-  
-  function handleTouchEnd(e) {
-    if (!isDragging) return;
-    
-    isDragging = false;
-    container.style.transition = 'transform 0.3s ease-in-out';
-    
-    const diffX = currentX - startX;
-    const timeDiff = Date.now() - startTime;
-    const velocity = Math.abs(diffX) / timeDiff;
-    
-    // Determinar se deve mudar de slide baseado na distância e velocidade
-    const threshold = 50; // pixels mínimos para mudar slide
-    const velocityThreshold = 0.3; // velocidade mínima
-    
-    if (Math.abs(diffX) > threshold || velocity > velocityThreshold) {
-      if (diffX > 0) {
-        prevSlide();
-      } else {
-        nextSlide();
-      }
-    } else {
-      // Voltar para o slide atual
-      updateCarousel();
-    }
-  }
-  
-  // Event listeners para botões (apenas em telas maiores)
+  // Event listeners
   nextBtn?.addEventListener('click', nextSlide);
   prevBtn?.addEventListener('click', prevSlide);
   
-  // Event listeners para touch/swipe
-  container.addEventListener('touchstart', handleTouchStart, { passive: true });
-  container.addEventListener('touchmove', handleTouchMove, { passive: true });
-  container.addEventListener('touchend', handleTouchEnd, { passive: true });
+  // Suporte a touch/swipe no mobile
+  let startX = 0;
+  let isDragging = false;
   
-  // Prevenir scroll horizontal no mobile durante o swipe
-  container.addEventListener('touchmove', (e) => {
-    if (isDragging) {
-      e.preventDefault();
+  container.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+  
+  container.addEventListener('touchend', (e) => {
+    if (!isDragging) return;
+    
+    const endX = e.changedTouches[0].clientX;
+    const diffX = startX - endX;
+    
+    // Se o movimento foi significativo (mais de 50px)
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0) {
+        nextSlide(); // Swipe para esquerda = próximo
+      } else {
+        prevSlide(); // Swipe para direita = anterior
+      }
     }
-  }, { passive: false });
+    
+    isDragging = false;
+  });
   
-  // Auto-play (pausar durante interação)
+  // Auto-play (opcional)
   let autoPlayInterval;
   
   function startAutoPlay() {
-    autoPlayInterval = setInterval(() => {
-      if (!isDragging) {
-        nextSlide();
-      }
-    }, 5000);
+    autoPlayInterval = setInterval(nextSlide, 5000);
   }
   
   function stopAutoPlay() {
@@ -361,18 +325,20 @@ const passeios = [
   }
   
   // Pausar auto-play durante interação
+  container.addEventListener('mouseenter', stopAutoPlay);
+  container.addEventListener('mouseleave', startAutoPlay);
   container.addEventListener('touchstart', stopAutoPlay);
   container.addEventListener('touchend', () => {
-    setTimeout(startAutoPlay, 3000); // Reiniciar após 3 segundos
+    setTimeout(startAutoPlay, 3000);
   });
   
-  // Inicializar
-  updateCarousel();
-  startAutoPlay();
-  
-  // Atualizar no resize
+  // Atualizar no redimensionamento da tela
   window.addEventListener('resize', () => {
     currentSlide = 0; // Reset para o primeiro slide
     updateCarousel();
   });
+  
+  // Inicializar carrossel
+  updateCarousel();
+  startAutoPlay();
 </script>
