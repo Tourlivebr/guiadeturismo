@@ -596,6 +596,66 @@ const passeios = [
   container.addEventListener('mouseenter', stopAutoPlay);
   container.addEventListener('mouseleave', startAutoPlay);
   
+  // Funcionalidade de touch/swipe para mobile
+  let startX = 0;
+  let startY = 0;
+  let isDragging = false;
+  let startTime = 0;
+  
+  container.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isDragging = true;
+    startTime = Date.now();
+    stopAutoPlay();
+  }, { passive: true });
+  
+  container.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+    const diffX = Math.abs(currentX - startX);
+    const diffY = Math.abs(currentY - startY);
+    
+    // Se o movimento horizontal for maior que o vertical, prevenir scroll vertical
+    if (diffX > diffY) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+  
+  container.addEventListener('touchend', (e) => {
+    if (!isDragging) return;
+    
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
+    const diffX = startX - endX;
+    const diffY = Math.abs(startY - endY);
+    const diffTime = Date.now() - startTime;
+    
+    isDragging = false;
+    
+    // Verificar se foi um swipe horizontal (não vertical)
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50 && diffTime < 300) {
+      const totalSlides = getTotalSlides();
+      
+      if (diffX > 0 && currentSlide < totalSlides - 1) {
+        // Swipe para a esquerda - próximo slide
+        currentSlide++;
+        updateCarousel();
+      } else if (diffX < 0 && currentSlide > 0) {
+        // Swipe para a direita - slide anterior
+        currentSlide--;
+        updateCarousel();
+      }
+    }
+    
+    // Reiniciar auto-play após um delay
+    setTimeout(() => {
+      startAutoPlay();
+    }, 1000);
+  }, { passive: true });
+  
   // Redimensionar janela
   window.addEventListener('resize', () => {
     currentSlide = 0;
