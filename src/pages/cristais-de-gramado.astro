@@ -8,11 +8,11 @@ const passeio = {
   titulo: "Cristais de Gramado",
   subtitulo: "Ingresso",
   categoria: "INGRESSOS E ATRAÇÕES",
-  preco: 50.00,
+  preco: 39.00,
   avaliacao: 4.67,
   totalAvaliacoes: 6,
-  parcelas: "6x sem juros",
-  descricao: "Descubra a magia dos cristais na melhor fábrica de cristal Murano de Gramado. Uma experiência única onde você pode acompanhar ao vivo todo o processo de produção artística dos cristais, desde o derretimento até a criação de peças únicas. O tour inclui o espetáculo 'A Voz do Cristal', uma apresentação emocionante que combina música, luz e a beleza dos cristais em uma experiência sensorial inesquecível.",
+  parcelas: "A partir de:",
+  descricao: "Descubra a magia dos cristais na mais artística fábrica de cristal Murano da América do Sul. Uma experiência única onde você pode acompanhar ao vivo todo o processo de produção artística dos cristais, desde o derretimento até a criação de peças únicas. O tour inclui o espetáculo 'A Voz do Cristal', uma apresentação emocionante que combina música, luz e a beleza dos cristais em uma experiência sensorial inesquecível.",
   inclusos: [
     "Ingresso para a fábrica",
     "Tour guiado pela produção",
@@ -23,12 +23,14 @@ const passeio = {
   duracao: "2 horas",
   horarios: ["09:00", "14:00", "16:00"],
   galeria: [
-    "/images/cristais_de_gramado_o_inquestionavel.jpg",
-    "/images/grupo-dreams-passaporte.jpg",
-    "/images/gramado_selfie_.webp",
-    "/images/terra-magica-florybal.webp"
+    "/images/cristais/cristais_de_gramado_o_inquestionavel.jpg",
+    "/images/cristais/cristais01.png",
+    "/images/cristais/cristais02.jpg",
+    "/images/cristais/cristais03.png",
+    "/images/cristais/cristais04.png",
+    "/images/cristais/cristais05.jpg"
   ],
-  tags: ["Melhor fábrica de cristal Murano", "Tour ao vivo da produção artística", "Espetáculo 'A Voz do Cristal'"]
+  tags: ["Fábrica de cristal Murano", "Tour ao vivo da produção artística", "Espetáculo 'A Voz do Cristal'"]
 };
 
 const whatsappMessage = `Olá! Gostaria de mais informações sobre o ${passeio.titulo} - ${passeio.subtitulo}. Valor: R$ ${passeio.preco.toFixed(2).replace('.', ',')} em ${passeio.parcelas}.`;
@@ -43,12 +45,7 @@ const whatsappUrl = `https://wa.me/5554993220552?text=${encodeURIComponent(whats
   
   <main class="pt-20 lg:pt-24">
     <!-- Hero Section -->
-    <section class="relative h-96 lg:h-[500px] overflow-hidden">
-      <img 
-        src={passeio.galeria[0]} 
-        alt={passeio.titulo}
-        class="w-full h-full object-cover"
-      />
+    <section class="relative h-96 lg:h-[500px] overflow-hidden" style={`background-image: url('${passeio.galeria[0]}'); background-attachment: fixed; background-size: cover; background-position: center; background-repeat: no-repeat;`}>
       <div class="absolute inset-0 bg-black/40"></div>
       <div class="absolute inset-0 flex items-center justify-center">
         <div class="text-center text-white px-4">
@@ -72,8 +69,8 @@ const whatsappUrl = `https://wa.me/5554993220552?text=${encodeURIComponent(whats
               <span class="text-gray-600">({passeio.totalAvaliacoes} avaliações)</span>
             </div>
             <div class="text-right">
+              <div class="text-gray-600 text-sm mb-1">{passeio.parcelas}</div>
               <div class="text-3xl font-bold text-primary-600">R$ {passeio.preco.toFixed(2).replace('.', ',')}</div>
-              <div class="text-gray-600">ou em {passeio.parcelas}</div>
             </div>
           </div>
 
@@ -133,10 +130,10 @@ const whatsappUrl = `https://wa.me/5554993220552?text=${encodeURIComponent(whats
           <div class="sticky top-32">
             <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-lg">
               <div class="text-center mb-6">
+                <div class="text-gray-600 text-sm mb-1">{passeio.parcelas}</div>
                 <div class="text-3xl font-bold text-primary-600 mb-2">
                   R$ {passeio.preco.toFixed(2).replace('.', ',')}
                 </div>
-                <div class="text-gray-600">ou em {passeio.parcelas}</div>
               </div>
 
               <!-- Informações do Passeio -->
@@ -157,7 +154,20 @@ const whatsappUrl = `https://wa.me/5554993220552?text=${encodeURIComponent(whats
 
               <!-- Botão de Compra -->
               <a 
-                href={whatsappUrl}
+                href="https://ingressos.cristaisdegramado.com.br?ac=2EV1BXPUCW"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-6 rounded-lg transition-colors flex items-center justify-center space-x-2 mb-4"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <span class="text-center">Compre pelo Site Oficial</span>
+              </a>
+
+              <!-- Botão de Reserva via WhatsApp -->
+              <a 
+                href="https://wa.me/5554993220552?text=Gostaria%20de%20fazer%20o%20passeio%20para%20a%20Cristais%20de%20Gramado"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg transition-colors flex items-center justify-center space-x-2"

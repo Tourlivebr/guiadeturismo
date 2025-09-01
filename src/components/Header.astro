@@ -1,126 +1,5 @@
 ---
-// Dados dos passeios para busca
-const todosPasseios = [
-  // Ingressos e Atrações
-  {
-    id: 1,
-    titulo: "Cristais de Gramado",
-    subtitulo: "Ingresso",
-    categoria: "INGRESSOS E ATRAÇÕES",
-    tipo: "ingressos",
-    slug: "cristais-de-gramado"
-  },
-  {
-    id: 2,
-    titulo: "Grupo Dreams",
-    subtitulo: "Passaporte para 7 Atrações",
-    categoria: "INGRESSOS E ATRAÇÕES",
-    tipo: "ingressos",
-    slug: "grupo-dreams"
-  },
-  {
-    id: 3,
-    titulo: "Ingresso Selfie Gramado",
-    subtitulo: "Cenários Instagramáveis",
-    categoria: "INGRESSOS E ATRAÇÕES",
-    tipo: "ingressos",
-    slug: "selfie-gramado"
-  },
-  {
-    id: 4,
-    titulo: "Parque Terra Mágica Florybal",
-    subtitulo: "Parque Temático",
-    categoria: "INGRESSOS E ATRAÇÕES",
-    tipo: "ingressos",
-    slug: "terra-magica-florybal"
-  },
-  // Passeios e Receptivo
-  {
-    id: 5,
-    titulo: "Tour O Quatrilho",
-    subtitulo: "Passeio Rural Com Almoço Típico",
-    categoria: "PASSEIOS",
-    tipo: "passeios",
-    slug: "tour-o-quatrilho"
-  },
-  {
-    id: 6,
-    titulo: "Tour Trem e Vinho",
-    subtitulo: "Com Trem Maria Fumaça e Épopeia",
-    categoria: "PASSEIOS",
-    tipo: "passeios",
-    slug: "tour-trem-vinho"
-  },
-  {
-    id: 7,
-    titulo: "Tour Raízes Coloniais",
-    subtitulo: "Passeio Rural Com Café Colonial",
-    categoria: "PASSEIOS",
-    tipo: "passeios",
-    slug: "tour-raizes-coloniais"
-  },
-  {
-    id: 8,
-    titulo: "Tour Linha Ávila",
-    subtitulo: "Passeio Rural com Costelão na Vala tradicional",
-    categoria: "PASSEIOS",
-    tipo: "passeios",
-    slug: "tour-linha-avila"
-  },
-  {
-    id: 9,
-    titulo: "Tour Uva e Vinho Vale dos Vinhedos",
-    categoria: "PASSEIOS PRIVATIVOS",
-    tipo: "passeios",
-    slug: "tour-uva-vinho-vale-vinhedos"
-  },
-  {
-    id: 10,
-    titulo: "Tour das Hortênsias Gramado e Canela",
-    categoria: "PASSEIOS PRIVATIVOS",
-    tipo: "passeios",
-    slug: "tour-hortensias-gramado-canela"
-  },
-  {
-    id: 11,
-    titulo: "Tour dos Parques",
-    categoria: "PASSEIOS PRIVATIVOS",
-    tipo: "passeios",
-    slug: "tour-dos-parques"
-  },
-  {
-    id: 12,
-    titulo: "Parque Space Adventure I",
-    subtitulo: "Parque Temático",
-    categoria: "INGRESSOS E ATRAÇÕES",
-    tipo: "ingressos",
-    slug: "parque-space-adventure"
-  },
-  {
-    id: 13,
-    titulo: "Delícias de Gramado e Canela",
-    subtitulo: "Passeio Privativo",
-    categoria: "PASSEIOS PRIVATIVOS",
-    tipo: "passeios",
-    slug: "delicias-gramado-canela"
-  },
-  {
-    id: 14,
-    titulo: "Ensaio Fotográfico Gramado e Canela",
-    subtitulo: "Passeio Privativo",
-    categoria: "PASSEIOS PRIVATIVOS",
-    tipo: "passeios",
-    slug: "ensaio-fotografico-gramado-canela"
-  },
-  {
-    id: 15,
-    titulo: "Tour Colônia Alemã Nova Petrópolis",
-    subtitulo: "Passeio Privativo",
-    categoria: "PASSEIOS PRIVATIVOS",
-    tipo: "passeios",
-    slug: "tour-colonia-alema-nova-petropolis"
-  }
-];
+// Remover todo o array todosPasseios daqui - agora será definido no JavaScript
 ---
 
 <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/20 dark:border-gray-700/20">
@@ -291,7 +170,141 @@ const todosPasseios = [
   </div>
 </header>
 
-<script define:vars={{ todosPasseios }}>
+<script>
+  // Dados dos passeios para busca (agora definido diretamente no JavaScript)
+  const todosPasseios = [
+    // Ingressos e Atrações
+    {
+      id: 1,
+      titulo: "Cristais de Gramado",
+      subtitulo: "Ingresso",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "cristais-de-gramado"
+    },
+    {
+      id: 2,
+      titulo: "Grupo Dreams",
+      subtitulo: "Passaporte para 7 Atrações",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "grupo-dreams"
+    },
+    {
+      id: 3,
+      titulo: "Ingresso Selfie Gramado",
+      subtitulo: "Cenários Instagramáveis",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "selfie-gramado"
+    },
+    {
+      id: 4,
+      titulo: "Parque Terra Mágica Florybal",
+      subtitulo: "Parque Temático",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "terra-magica-florybal"
+    },
+    {
+      id: 12,
+      titulo: "Parque Space Adventure I",
+      subtitulo: "Parque Temático",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "parque-space-adventure"
+    },
+    {
+      id: 16,
+      titulo: "Parque Vila da Mônica",
+      subtitulo: "Parque Temático",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "parque-vila-da-monica"
+    },
+    // Passeios e Receptivo
+    {
+      id: 5,
+      titulo: "Tour O Quatrilho",
+      subtitulo: "Passeio Rural Com Almoço Típico",
+      categoria: "PASSEIOS",
+      tipo: "passeios",
+      slug: "tour-o-quatrilho"
+    },
+    {
+      id: 6,
+      titulo: "Tour Trem e Vinho",
+      subtitulo: "Com Trem Maria Fumaça e Épopeia",
+      categoria: "PASSEIOS",
+      tipo: "passeios",
+      slug: "tour-trem-vinho"
+    },
+    {
+      id: 7,
+      titulo: "Tour Raízes Coloniais",
+      subtitulo: "Passeio Rural Com Café Colonial",
+      categoria: "PASSEIOS",
+      tipo: "passeios",
+      slug: "tour-raizes-coloniais"
+    },
+    {
+      id: 8,
+      titulo: "Tour Linha Ávila",
+      subtitulo: "Passeio Rural com Costelão na Vala tradicional",
+      categoria: "PASSEIOS",
+      tipo: "passeios",
+      slug: "tour-linha-avila"
+    },
+    {
+      id: 9,
+      titulo: "Tour Uva e Vinho Vale dos Vinhedos",
+      subtitulo: "Passeio Privativo",
+      categoria: "PASSEIOS PRIVATIVOS",
+      tipo: "passeios",
+      slug: "tour-uva-vinho-vale-vinhedos"
+    },
+    {
+      id: 10,
+      titulo: "Tour das Hortênsias Gramado e Canela",
+      subtitulo: "Passeio Privativo",
+      categoria: "PASSEIOS PRIVATIVOS",
+      tipo: "passeios",
+      slug: "tour-hortensias-gramado-canela"
+    },
+    {
+      id: 11,
+      titulo: "Tour dos Parques",
+      subtitulo: "Passeio Privativo",
+      categoria: "PASSEIOS PRIVATIVOS",
+      tipo: "passeios",
+      slug: "tour-dos-parques"
+    },
+    {
+      id: 13,
+      titulo: "Delícias de Gramado e Canela",
+      subtitulo: "Passeio Privativo",
+      categoria: "PASSEIOS PRIVATIVOS",
+      tipo: "passeios",
+      slug: "delicias-gramado-canela"
+    },
+    {
+      id: 14,
+      titulo: "Ensaio Fotográfico Gramado e Canela",
+      subtitulo: "Passeio Privativo",
+      categoria: "PASSEIOS PRIVATIVOS",
+      tipo: "passeios",
+      slug: "ensaio-fotografico-gramado-canela"
+    },
+    {
+      id: 15,
+      titulo: "Tour Colônia Alemã Nova Petrópolis",
+      subtitulo: "Passeio Privativo",
+      categoria: "PASSEIOS PRIVATIVOS",
+      tipo: "passeios",
+      slug: "tour-colonia-alema-nova-petropolis"
+    }
+  ];
+
   // Header scroll behavior
   const header = document.getElementById('header');
   const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -312,6 +325,8 @@ const todosPasseios = [
   
   // Search functionality
   function performSearch(query, resultsContainer) {
+    console.log('Performing search for:', query); // Debug
+    
     if (!query.trim()) {
       resultsContainer.classList.add('hidden');
       return;
@@ -319,13 +334,15 @@ const todosPasseios = [
     
     const filteredPasseios = todosPasseios.filter(passeio => 
       passeio.titulo.toLowerCase().includes(query.toLowerCase()) ||
-      passeio.subtitulo.toLowerCase().includes(query.toLowerCase())
+      (passeio.subtitulo && passeio.subtitulo.toLowerCase().includes(query.toLowerCase()))
     );
+    
+    console.log('Filtered results:', filteredPasseios); // Debug
     
     if (filteredPasseios.length === 0) {
       resultsContainer.innerHTML = `
         <div class="p-4 text-gray-500 text-center">
-          Nenhum passeio encontrado
+          Nenhum passeio encontrado para "${query}"
         </div>
       `;
     } else {
@@ -334,7 +351,7 @@ const todosPasseios = [
         return `
           <a href="${href}" class="block p-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0">
             <div class="font-medium text-gray-800">${passeio.titulo}</div>
-            <div class="text-sm text-gray-600">${passeio.subtitulo}</div>
+            <div class="text-sm text-gray-600">${passeio.subtitulo || ''}</div>
             <div class="text-xs text-blue-600 mt-1">${passeio.categoria}</div>
           </a>
         `;

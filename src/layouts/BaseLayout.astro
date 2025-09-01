@@ -69,6 +69,11 @@ const socialImage = new URL(image, baseUrl).toString();
     </script>
     
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
   <body class="bg-white text-gray-900 font-sans antialiased">
     <slot />
