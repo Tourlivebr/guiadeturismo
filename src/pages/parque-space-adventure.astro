@@ -5,27 +5,41 @@ import Footer from '../components/Footer.astro';
 import StarRating from '../components/StarRating.astro';
 
 const passeio = {
-  titulo: "Parque Space Adventure I",
-  subtitulo: "Ingresso",
+  titulo: "Space Adventure",
+  subtitulo: "A experiência oficial da NASA na Serra Gaúcha",
   categoria: "INGRESSOS E ATRAÇÕES",
   preco: 21.58,
   avaliacao: 4.00,
   totalAvaliacoes: 6,
   parcelas: "6x sem juros",
-  descricao: "Uma aventura espacial única! Explore o universo em uma experiência imersiva com tecnologia de ponta, simuladores espaciais e atrações que vão te levar às estrelas.",
+  descricao: "Prepare-se para uma viagem inesquecível ao espaço sem sair da Terra! O Space Adventure é a primeira exposição oficial da NASA no Brasil, reunindo mais de 270 itens originais utilizados em missões espaciais. Localizada em Canela, a atração é imperdível para curiosos, apaixonados por ciência e fãs da exploração espacial de todas as idades.",
   inclusos: [
-    "Acesso limitado a 15 atrações",
-    "Show de patinação artística",
-    "Patinação no gelo inclusa"
+    "Entrada no Parque Space Adventure",
+    "Acesso ao Planetário 4K",
+    "Estacionamento gratuito"
+  ],
+  naoInclusos: [
+    "Alimentação e/ou bebidas",
+    "Jogos adicionais",
+    "Transporte até o parque"
   ],
   duracao: "Dia inteiro",
-  horarios: ["Consulte horários de funcionamento"],
+  horarios: ["10h às 18h (entrada até 17h)"],
+  endereco: "Av. Ernani Kroeff Fleck, 960 - Vila Suíça, Canela/RS",
   galeria: [
     "/images/spaceadventure/space01.webp",
-    "/images/spaceadventure/space02.webp",
-    "/images/spaceadventure/space03.webp"
+    "/images/spaceadventure/space01.webp",
+    "/images/spaceadventure/space01.webp"
   ],
-  tags: ["Aventura espacial", "Simuladores", "Tecnologia de ponta"]
+  destaques: [
+    "Cápsula Lunar da Apollo 11 com interior original",
+    "Sala de Comando de Houston (em réplica fiel)",
+    "Módulo Lunar em tamanho real",
+    "Simuladores imersivos – experimente a decolagem de um foguete",
+    "Planetário 4K de última geração",
+    "Área dedicada à missão para Marte"
+  ],
+  tags: ["NASA Oficial", "Exposição Espacial", "Planetário 4K", "Simuladores"]
 };
 
 const whatsappMessage = `Olá! Gostaria de mais informações sobre o ${passeio.titulo} - ${passeio.subtitulo}. Valor: R$ ${passeio.preco.toFixed(2).replace('.', ',')} em ${passeio.parcelas}.`;
@@ -71,12 +85,28 @@ const whatsappUrl = `https://wa.me/5554993220552?text=${encodeURIComponent(whats
           <!-- Descrição -->
           <div class="mb-8">
             <h2 class="text-2xl font-bold mb-4">Sobre esta atração</h2>
-            <p class="text-gray-700 leading-relaxed">{passeio.descricao}</p>
+            <p class="text-gray-700 leading-relaxed mb-4">{passeio.descricao}</p>
+            <p class="text-gray-700 leading-relaxed">Em um espaço de mais de 4 mil m², a exposição conta com a colaboração do Museu e Centro de Educação Espacial Cosmosphere, de Kansas (EUA), trazendo itens originais dos projetos Mercury, Gemini e Apollo.</p>
+          </div>
+
+          <!-- Destaques da Experiência -->
+          <div class="mb-8">
+            <h3 class="text-xl font-bold mb-4">🚀 Destaques da experiência Space Adventure</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              {passeio.destaques.map(destaque => (
+                <div class="flex items-start space-x-3 p-4 bg-blue-50 rounded-lg">
+                  <svg class="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700 text-sm">{destaque}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           <!-- O que está incluso -->
           <div class="mb-8">
-            <h3 class="text-xl font-bold mb-4">O que está incluso</h3>
+            <h3 class="text-xl font-bold mb-4">✅ O que está incluso</h3>
             <ul class="space-y-2">
               {passeio.inclusos.map(item => (
                 <li class="flex items-center space-x-3">
