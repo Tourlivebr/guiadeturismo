@@ -1,5 +1,5 @@
 ---
-// Lista de passeios disponíveis
+/* Lista de passeios disponíveis */
 const passeios = [
   'Gramado e Canela - City Tour',
   'Vale dos Vinhedos - Bento Gonçalves',
@@ -11,7 +11,6 @@ const passeios = [
   'Farroupilha - Turismo Rural'
 ];
 ---
-
 <div class="max-w-7xl mx-auto px-4 py-12">
   <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-12 items-start">
     <!-- Coluna Esquerda: Texto, Mascote e Elementos Visuais -->
@@ -21,7 +20,7 @@ const passeios = [
         <h2 class="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white mb-4">
           Reserve Seu Passeio dos Sonhos!
         </h2>
-     
+
         <!-- Balão de Fala -->
         <div class="relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-700 dark:to-gray-600 rounded-3xl p-4 lg:p-6 shadow-lg animate-pulse">
           <div class="text-center">
@@ -90,7 +89,7 @@ const passeios = [
 
       <!-- Formulário -->
       <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4 lg:p-6 xl:p-8">
-        <form id="contactForm" class="space-y-4 lg:space-y-6">
+        <form id="contactForm" class="space-y-4 lg:space-y-6" autocomplete="on" novalidate>
           <!-- Nome -->
           <div>
             <label for="nome" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -101,11 +100,12 @@ const passeios = [
               id="nome"
               name="nome"
               required
+              autocomplete="name"
               class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white transition-colors"
               placeholder="Digite seu nome completo"
             />
           </div>
-  
+
           <!-- Data -->
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -121,7 +121,7 @@ const passeios = [
                 >
                   <option value="">Dia</option>
                   {Array.from({ length: 31 }, (_, i) => i + 1).map(day => (
-                    <option value={day}>{day}</option>
+                    <option value={String(day).padStart(2,'0')}>{day}</option>
                   ))}
                 </select>
               </div>
@@ -162,7 +162,7 @@ const passeios = [
               </div>
             </div>
           </div>
-  
+
           <!-- Passeios (Seleção Múltipla com Dropdown) -->
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
@@ -188,7 +188,7 @@ const passeios = [
                 class="absolute z-10 w-full mt-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg max-h-64 overflow-y-auto hidden"
               >
                 <div class="p-2 space-y-1">
-                  {passeios.map((passeio, index) => (
+                  {passeios.map((passeio) => (
                     <label class="flex items-center p-2 hover:bg-gray-50 dark:hover:bg-gray-600 rounded cursor-pointer transition-colors">
                       <input
                         type="checkbox"
@@ -206,14 +206,12 @@ const passeios = [
             </div>
             
             <!-- Tags dos passeios selecionados -->
-            <div id="selectedTags" class="mt-3 flex flex-wrap gap-2 min-h-[24px]">
-
-            </div>
+            <div id="selectedTags" class="mt-3 flex flex-wrap gap-2 min-h-[24px]"></div>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">
               💡 Clique no menu acima para selecionar múltiplos passeios
             </p>
           </div>
-  
+
           <!-- Telefone -->
           <div>
             <label for="telefone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -224,11 +222,13 @@ const passeios = [
               id="telefone"
               name="telefone"
               required
+              inputmode="tel"
+              autocomplete="tel"
               class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white transition-colors"
               placeholder="(00) 00000-0000"
             />
           </div>
-  
+
           <!-- Mensagem -->
           <div>
             <label for="mensagem" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -242,14 +242,14 @@ const passeios = [
               placeholder="Conte-nos mais sobre suas expectativas, número de pessoas, preferências especiais..."
             ></textarea>
           </div>
-  
+
           <!-- Botão de Envio -->
           <div class="pt-4">
             <button
               type="submit"
               class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-3 text-lg"
             >
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
               </svg>
               Enviar via WhatsApp
@@ -265,7 +265,7 @@ const passeios = [
   document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
     const telefoneInput = document.getElementById('telefone');
-    
+
     // Elementos do dropdown de passeios
     const dropdownButton = document.getElementById('passeiosDropdown');
     const dropdownMenu = document.getElementById('passeiosMenu');
@@ -273,12 +273,31 @@ const passeios = [
     const selectedText = document.getElementById('passeiosSelected');
     const selectedTags = document.getElementById('selectedTags');
     const checkboxes = dropdownMenu.querySelectorAll('input[type="checkbox"]');
-    
+
+    // Util: escolhe endpoint do WhatsApp mais estável por ambiente
+    function buildWhatsAppUrl(phoneDigits, text) {
+      // 1) Normaliza quebras de linha e codifica TUDO
+      const normalized = String(text).replace(/\r\n/g, '\n');
+      const textoCodificado = encodeURIComponent(normalized);
+
+      // 2) Número apenas dígitos (wa.me não aceita +, espaços, etc.)
+      const numero = String(phoneDigits).replace(/\D/g, '');
+
+      // 3) Desktop costuma ir melhor com api.whatsapp.com
+      const isMobile = /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        // Em mobile, wa.me abre direto no app
+        return `https://wa.me/${numero}?text=${textoCodificado}`;
+      }
+      // Fallback/desktop
+      return `https://api.whatsapp.com/send?phone=${numero}&text=${textoCodificado}`;
+    }
+
     // Controle do dropdown
     dropdownButton.addEventListener('click', function(e) {
       e.preventDefault();
       const isOpen = !dropdownMenu.classList.contains('hidden');
-      
       if (isOpen) {
         dropdownMenu.classList.add('hidden');
         dropdownIcon.style.transform = 'rotate(0deg)';
@@ -287,7 +306,7 @@ const passeios = [
         dropdownIcon.style.transform = 'rotate(180deg)';
       }
     });
-    
+
     // Fechar dropdown ao clicar fora
     document.addEventListener('click', function(e) {
       if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
@@ -295,13 +314,13 @@ const passeios = [
         dropdownIcon.style.transform = 'rotate(0deg)';
       }
     });
-    
+
     // Atualizar seleções
     function updateSelections() {
       const selected = Array.from(checkboxes)
         .filter(cb => cb.checked)
         .map(cb => cb.value);
-      
+
       // Atualizar texto do botão
       if (selected.length === 0) {
         selectedText.textContent = 'Selecione os passeios...';
@@ -313,7 +332,7 @@ const passeios = [
         selectedText.textContent = `${selected.length} passeios selecionados`;
         selectedText.className = 'text-gray-900 dark:text-white';
       }
-      
+
       // Atualizar tags
       selectedTags.innerHTML = '';
       selected.forEach(passeio => {
@@ -321,8 +340,8 @@ const passeios = [
         tag.className = 'inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
         tag.innerHTML = `
           ${passeio}
-          <button type="button" class="ml-1 text-blue-600 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-100" onclick="removeSelection('${passeio}')">
-            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+          <button type="button" class="ml-1 text-blue-600 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-100" onclick="removeSelection('${passeio.replace(/'/g, "\\'")}')">
+            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
             </svg>
           </button>
@@ -330,8 +349,8 @@ const passeios = [
         selectedTags.appendChild(tag);
       });
     }
-    
-    // Remover seleção via tag
+
+    // Remover seleção via tag (exposto globalmente)
     window.removeSelection = function(passeio) {
       const checkbox = Array.from(checkboxes).find(cb => cb.value === passeio);
       if (checkbox) {
@@ -339,16 +358,15 @@ const passeios = [
         updateSelections();
       }
     };
-    
+
     // Listener para mudanças nos checkboxes
     checkboxes.forEach(checkbox => {
       checkbox.addEventListener('change', updateSelections);
     });
-    
+
     // Máscara para telefone
     telefoneInput.addEventListener('input', function(e) {
       let value = e.target.value.replace(/\D/g, '');
-      
       if (value.length <= 11) {
         if (value.length <= 2) {
           value = value.replace(/(\d{0,2})/, '($1');
@@ -358,46 +376,45 @@ const passeios = [
           value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
         }
       }
-      
       e.target.value = value;
     });
-    
+
     // Envio do formulário
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      
+
       const formData = new FormData(form);
-      const nome = formData.get('nome');
-      const dia = formData.get('dia');
-      const mes = formData.get('mes');
-      const ano = formData.get('ano');
-      const telefone = formData.get('telefone');
-      const mensagem = formData.get('mensagem') || 'Nenhuma mensagem adicional';
-      
+      const nome = String(formData.get('nome') || '').trim();
+      const dia = String(formData.get('dia') || '').padStart(2, '0');
+      const mes = String(formData.get('mes') || '');
+      const ano = String(formData.get('ano') || '');
+      const telefone = String(formData.get('telefone') || '').trim();
+      const mensagem = String(formData.get('mensagem') || 'Nenhuma mensagem adicional').trim();
+
       // Obter passeios selecionados
       const passeiosSelecionados = formData.getAll('passeios');
-      
+
       // Validação básica
       if (!nome || !dia || !mes || !ano || !telefone) {
         alert('Por favor, preencha todos os campos obrigatórios.');
         return;
       }
-      
       if (passeiosSelecionados.length === 0) {
         alert('Por favor, selecione pelo menos um passeio.');
         return;
       }
-      
+
       // Formatação da data
-      const dataFormatada = `${dia.padStart(2, '0')}/${mes}/${ano}`;
-      
+      const dataFormatada = `${dia}/${mes}/${ano}`;
+
       // Formatação dos passeios selecionados
-      const passeiosTexto = passeiosSelecionados.map((passeio, index) => 
-        `${index + 1}. ${passeio}`
-      ).join('\n');
-      
-      // Montagem da mensagem para WhatsApp
-      const mensagemWhatsApp = `🌟 *Solicitação de Passeios* 🌟\n\n` +
+      const passeiosTexto = passeiosSelecionados
+        .map((passeio, index) => `${index + 1}. ${passeio}`)
+        .join('\n');
+
+      // ===== Mensagem para WhatsApp (com emojis e negrito) =====
+      const mensagemWhatsApp =
+        `🌟 *Solicitação de Passeios* 🌟\n\n` +
         `👤 *Nome:* ${nome}\n` +
         `📅 *Data Desejada:* ${dataFormatada}\n\n` +
         `🎯 *Passeios de Interesse:*\n${passeiosTexto}\n\n` +
@@ -405,34 +422,37 @@ const passeios = [
         `💬 *Mensagem:* ${mensagem}\n\n` +
         `📍 *Enviado através do site* - Filippi Arruda Turismo\n` +
         `⏰ *${new Date().toLocaleString('pt-BR')}*`;
-      
-      // Número do WhatsApp
+
+      // Número do WhatsApp (seu número de atendimento) — APENAS DÍGITOS
       const numeroWhatsApp = '5554993220552';
-      
-      // URL do WhatsApp
-      const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagemWhatsApp)}`;
-      
+
+      // Monta URL correta e codifica TUDO que vai em text=
+      const urlWhatsApp = buildWhatsAppUrl(numeroWhatsApp, mensagemWhatsApp);
+
       // Abrir WhatsApp
-      window.open(urlWhatsApp, '_blank');
-      
+      try {
+        window.open(urlWhatsApp, '_blank', 'noopener,noreferrer');
+      } catch (err) {
+        console.error('Falha ao abrir WhatsApp:', err);
+        alert('Não foi possível abrir o WhatsApp. Tente novamente.');
+        return;
+      }
+
       // Limpar formulário após envio
       form.reset();
       updateSelections(); // Limpar seleções do dropdown
-      
+
       // Feedback visual
       const button = form.querySelector('button[type="submit"]');
       const originalText = button.innerHTML;
       button.innerHTML = `
-        <svg class="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24">
+        <svg class="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
           <path class="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
         Redirecionando...
       `;
-      
-      setTimeout(() => {
-        button.innerHTML = originalText;
-      }, 2000);
+      setTimeout(() => (button.innerHTML = originalText), 2000);
     });
   });
 </script>
