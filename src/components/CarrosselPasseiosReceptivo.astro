@@ -3,39 +3,39 @@
 const passeiosReceptivo = [
   {
     id: 1,
-    title: "Tour O Quatrilho",
-    subtitle: "Passeio Rural Com Almoço Típico",
-    category: "PASSEIOS",
-    image: "/images/cristais_de_gramado_o_inquestionavel.jpg",
-    rating: 4.81,
-    totalRatings: 36,
-    price: 28.17,
+    title: "Transfer Ida e Volta (POA ou Caxias/ Gramado ou Canela)",
+    subtitle: "Transporte Privativo",
+    category: "RECEPTIVO",
+    image: "/images/Transfer/Transfer.png",
+    rating: 4.95,
+    totalRatings: 127,
+    price: 280.00,
     installments: "6x sem juros",
-    tags: ["Almoço típico com receitas locais", "História do filme 'O Quatrilho'", "Tour por vilas históricas"]
+    tags: ["Sem espera no embarque/desembarque", "Embarque imediato", "Privacidade total"]
   },
   {
     id: 2,
-    title: "Tour Trem e Vinho - Com Trem Maria Fumaça e Épopeia...",
+    title: "Tour Uva e Vinho + Passeio de Maria Fumaça + Epopeia + Almoço (Coletivo)",
     subtitle: "Com Trem Maria Fumaça e Épopeia",
     category: "PASSEIOS",
-    image: "/images/grupo-dreams-passaporte.jpg",
+    image: "/images/maria-fumaca/maria-fumaca01.webp",
     rating: 4.93,
     totalRatings: 218,
     price: 61.50,
     installments: "6x sem juros",
-    tags: ["Caminhada pelo Parque Epopéia", "Degustação de vinhos e sucos", "Apresentações culturais"]
+    tags: ["Passeio de Trem Maria Fumaça", "Degustação de vinhos e sucos", "Epopeia Italiana"]
   },
   {
     id: 3,
-    title: "Tour Raízes Coloniais",
-    subtitle: "Passeio Rural Com Café Colonial",
-    category: "PASSEIOS",
-    image: "/images/gramado_selfie_.webp",
-    rating: 4.73,
-    totalRatings: 40,
-    price: 24.99,
+    title: "Ensaio Fotográfico Gramado e Canela",
+    subtitle: "Passeio Privativo",
+    category: "PASSEIOS PRIVATIVOS",
+    image: "/images/ensaios-fotograficos/ensaios.jpeg",
+    rating: 4.95,
+    totalRatings: 38,
+    price: 490.00,
     installments: "6x sem juros",
-    tags: ["Passeio cultural e emocional", "Café colonial autêntico e animado", "Conheça o processo do chimarrão"]
+    tags: ["Com charme e romantismo", "Que a cidade oferece", "Preparamos o passeio fotográfico 'Gramado e Canela VIP'"]
   },
   {
     id: 4,
@@ -97,20 +97,8 @@ const passeiosReceptivo = [
     installments: "6x sem juros",
     tags: ["Experiência sensorial e inesquecível", "O melhor que Gramado tem a oferecer", "Gastronomia e cultura local"]
   },
-  {
+    {
     id: 9,
-    title: "Ensaio Fotográfico Gramado e Canela",
-    subtitle: "Passeio Privativo",
-    category: "PASSEIOS PRIVATIVOS",
-    image: "/images/ensaio-fotografico.jpg",
-    rating: 4.95,
-    totalRatings: 38,
-    price: 490.00,
-    installments: "6x sem juros",
-    tags: ["Com charme e romantismo", "Que a cidade oferece", "Preparamos o passeio fotográfico 'Gramado e Canela VIP'"]
-  },
-  {
-    id: 10,
     title: "Tour Colônia Alemã Nova Petrópolis",
     subtitle: "Passeio Privativo",
     category: "PASSEIOS PRIVATIVOS",
@@ -119,7 +107,7 @@ const passeiosReceptivo = [
     totalRatings: 44,
     price: 450.00,
     installments: "6x sem juros",
-    tags: ["Uma história viva da colonização alemã", "Na Serra Gaúcha que preserva os costumes", "E a arquitetura típica"]
+    tags: ["Cultura alemã autêntica", "Arquitetura típica", "Gastronomia tradicional"]
   }
   // Adicione novos passeios aqui seguindo a mesma estrutura
 ];
@@ -242,8 +230,10 @@ const passeiosReceptivo = [
                     </div>
                     
                     <a 
-                      href={passeio.id === 1 ? '/passeio/tour-o-quatrilho' : passeio.id === 2 ? '/passeio/tour-trem-vinho' : '#'}
-                      class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+                      href={passeio.id === 1 ? '/transfer-privativo' : 
+                            passeio.id === 2 ? '/tour-trem-vinho-maria-fumaca' : 
+                            passeio.id === 3 ? '/ensaio-fotografico-gramado-canela' : '#'}
+                      class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center justify-center space-x-2"
                     >
                       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
