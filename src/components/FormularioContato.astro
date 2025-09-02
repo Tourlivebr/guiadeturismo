@@ -397,13 +397,14 @@ const passeios = [
       ).join('\n');
       
       // Montagem da mensagem para WhatsApp
-      const mensagemWhatsApp = `🌟 *Solicitação de Passeio${passeiosSelecionados.length > 1 ? 's' : ''}* 🌟\n\n` +
+      const mensagemWhatsApp = `🌟 *Solicitação de Passeios* 🌟\n\n` +
         `👤 *Nome:* ${nome}\n` +
-        `📅 *Data Desejada:* ${dataFormatada}\n` +
-        `🎯 *Passeio${passeiosSelecionados.length > 1 ? 's' : ''} de Interesse:*\n${passeiosTexto}\n` +
+        `📅 *Data Desejada:* ${dataFormatada}\n\n` +
+        `🎯 *Passeios de Interesse:*\n${passeiosTexto}\n\n` +
         `📱 *Telefone:* ${telefone}\n` +
         `💬 *Mensagem:* ${mensagem}\n\n` +
-        `Enviado através do site - Filippi Arruda Turismo`;
+        `📍 *Enviado através do site* - Filippi Arruda Turismo\n` +
+        `⏰ *${new Date().toLocaleString('pt-BR')}*`;
       
       // Número do WhatsApp
       const numeroWhatsApp = '5554993220552';

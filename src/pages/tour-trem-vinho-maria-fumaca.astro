@@ -87,12 +87,7 @@ const whatsappUrl = `https://wa.me/5554993220552?text=${encodeURIComponent(whats
   
   <main class="pt-20 lg:pt-24">
     <!-- Hero Section -->
-    <section class="relative h-96 lg:h-[500px] overflow-hidden">
-      <img 
-        src={passeio.galeria[0]} 
-        alt={passeio.titulo}
-        class="w-full h-full object-cover"
-      />
+    <section class="relative h-96 lg:h-[500px] overflow-hidden" style={`background-image: url('${passeio.galeria[0]}'); background-attachment: fixed; background-size: cover; background-position: center; background-repeat: no-repeat;`}>
       <div class="absolute inset-0 bg-black/40"></div>
       <div class="absolute inset-0 flex items-center justify-center">
         <div class="text-center text-white px-4">
