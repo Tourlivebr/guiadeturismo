@@ -5,5 +5,5 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'http://localhost:4321', // URL base para desenvolvimento
+  site: 'https://guiadeturismo.vercel.app', // URL de produção
 });
