@@ -5,7 +5,7 @@
 <section id="quem-sou" class="relative min-h-screen flex items-end justify-center overflow-hidden pt-24 lg:pt-24">
   <!-- Background Image -->
   <div 
-    class="absolute inset-0 z-0 bg-cover bg-center bg-fixed"
+    class="absolute inset-0 z-0 bg-cover bg-center bg-fixed animate-zoom-in"
     style="background-image: url('/images/ft_arruda01.png');"
   >
     <!-- Overlay escuro para melhor legibilidade -->
@@ -18,7 +18,7 @@
       <!-- Título Principal -->
       <div class="space-y-6 mb-8">
         <h1 class="text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-          Olá, bem vindo à <span class="text-primary-400">Serra Gaúcha</span>
+          Olá, bem vindo à <span class="text-primary-400 text-black">Serra Gaúcha</span>
         </h1>
         
         <p class="text-xl lg:text-2xl leading-relaxed max-w-3xl mx-auto text-gray-100">
@@ -76,3 +76,20 @@
     </a>
   </div>
 </section>
+
+<style>
+  @keyframes zoom-in {
+    0% {
+      transform: scale(1.2);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .animate-zoom-in {
+    animation: zoom-in 2s ease-out forwards;
+  }
+</style>
