@@ -9,8 +9,8 @@ const passeios = [
     imagem: "/images/cristais/cristais_de_gramado_o_inquestionavel.jpg",
     avaliacao: 4.67,
     totalAvaliacoes: 6,
-    preco: 13.00,
-    parcelas: 3,
+    preco: 38.00,
+    parcelas: 1,
     slug: "cristais-de-gramado",
     duracao: 120, // em minutos
     vendas: 150, // número de vendas
@@ -28,8 +28,8 @@ const passeios = [
     imagem: "/images/grupo-dreams-passaporte.jpg",
     avaliacao: 4.01,
     totalAvaliacoes: 10,
-    preco: 50.00,
-    parcelas: 6,
+    preco: 199.00,
+    parcelas: 1,
     slug: "grupo-dreams",
     duracao: 240, // em minutos
     vendas: 89,
@@ -47,8 +47,8 @@ const passeios = [
     imagem: "/images/parqueflorybal/terra-magica-florybal.webp",
     avaliacao: 4.57,
     totalAvaliacoes: 7,
-    preco: 25.00,
-    parcelas: 6,
+    preco: 75.00,
+    parcelas: 1,
     slug: "terra-magica-florybal",
     duracao: 180, // em minutos
     vendas: 120,
@@ -199,7 +199,7 @@ const passeios = [
                   <div>
                     <p class="text-sm text-gray-500 dark:text-gray-400">A partir de</p>
                     <p class="text-2xl font-bold text-gray-900 dark:text-white">
-                      {passeio.parcelas}x de R$ {passeio.preco.toFixed(2).replace('.', ',')}
+                      {(passeio.id === 1 || passeio.id === 2) ? `R$ ${passeio.preco.toFixed(2).replace('.', ',')}` : `${passeio.parcelas}x de R$ ${passeio.preco.toFixed(2).replace('.', ',')}`}
                     </p>
                     <p class="text-xs text-gray-500 dark:text-gray-400">Pague em até 3x sem juros</p>
                   </div>
@@ -254,8 +254,8 @@ const passeios = [
       imagem: "/images/cristais/cristais_de_gramado_o_inquestionavel.jpg",
       avaliacao: 4.67,
       totalAvaliacoes: 6,
-      preco: 13.00,
-      parcelas: 3,
+      preco: 38.00,
+      parcelas: 1,
       slug: "cristais-de-gramado",
       duracao: 120,
       vendas: 150,
@@ -273,8 +273,8 @@ const passeios = [
       imagem: "/images/grupo-dreams-passaporte.jpg",
       avaliacao: 4.01,
       totalAvaliacoes: 10,
-      preco: 50.00,
-      parcelas: 6,
+      preco: 199.00,
+      parcelas: 1,
       slug: "grupo-dreams",
       duracao: 240,
       vendas: 89,
@@ -292,8 +292,8 @@ const passeios = [
       imagem: "/images/parqueflorybal/terra-magica-florybal.webp",
       avaliacao: 4.57,
       totalAvaliacoes: 7,
-      preco: 25.00,
-      parcelas: 6,
+      preco: 75.00,
+      parcelas: 1,
       slug: "terra-magica-florybal",
       duracao: 180, // em minutos
       vendas: 120,
