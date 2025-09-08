@@ -241,9 +241,14 @@ const whatsappUrl = `https://wa.me/5554981354672?text=${encodeURIComponent(whats
               <div class="text-gray-500 text-sm">Pague em {passeio.parcelas}</div>
               
               <div class="mt-4 p-3 bg-gray-50 rounded-lg">
-                <StarRating rating={passeio.avaliacao} />
-                <div class="text-sm text-gray-600">
-                  {passeio.avaliacao} de 5 ({passeio.totalAvaliacoes} avaliações)
+                <div class="flex flex-col">
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-1"><strong>Nossos Clientes Recomendam:</strong></p>
+                  <div class="flex items-center">
+                    <StarRating rating={passeio.avaliacao} />
+                    <div class="text-sm text-gray-600 ml-2">
+                      {passeio.avaliacao} de 5 ({passeio.totalAvaliacoes} avaliações)
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

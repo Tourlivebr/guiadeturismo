@@ -43,7 +43,7 @@ const passeiosReceptivo = [
 <section id="passeios-receptivo" class="py-16 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
   <div class="container mx-auto px-4">
     <!-- Header da Seção -->
-    <div class="text-center mb-12">
+    <div class="text-center">
       <div class="flex items-center justify-center mb-6">
         <div class="h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent flex-1 max-w-xs"></div>
         <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mx-8">
@@ -51,31 +51,21 @@ const passeiosReceptivo = [
         </h2>
         <div class="h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent flex-1 max-w-xs"></div>
       </div>
-      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-        Descubra experiências autênticas e inesquecíveis na região colonial
-      </p>
     </div>
 
-    <!-- Filtros e Ordenação -->
-    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-      <div class="flex flex-wrap gap-2">
-        <button class="px-4 py-2 bg-primary-600 text-white rounded-full text-sm font-medium hover:bg-primary-700 transition-colors">
+    <!-- Filtros -->
+    <div class="flex justify-center mb-8">
+      <div class="flex flex-wrap gap-2 justify-center">
+        <button id="filter-todos" class="filter-btn px-4 py-2 bg-primary-600 text-white rounded-full text-sm font-medium hover:bg-primary-700 transition-colors" data-category="todos">
           Todos
         </button>
-        <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition-colors dark:bg-gray-700 dark:text-gray-300">
+        <button id="filter-passeios" class="filter-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition-colors dark:bg-gray-700 dark:text-gray-300" data-category="passeios">
           Passeios Rurais
         </button>
-        <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition-colors dark:bg-gray-700 dark:text-gray-300">
+        <button id="filter-gastronomia" class="filter-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition-colors dark:bg-gray-700 dark:text-gray-300" data-category="gastronomia">
           Gastronomia
         </button>
       </div>
-      
-      <select class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white">
-        <option>Ordenar por: Relevância</option>
-        <option>Menor preço</option>
-        <option>Maior preço</option>
-        <option>Melhor avaliação</option>
-      </select>
     </div>
 
     <!-- Carrossel Container -->
@@ -115,21 +105,24 @@ const passeiosReceptivo = [
                   </div>
 
                   <!-- Rating -->
-                  <div class="flex items-center gap-2 mb-4">
-                    <div class="flex items-center">
-                      {Array.from({ length: 5 }, (_, i) => (
-                        <svg 
-                          class={`w-4 h-4 ${i < Math.floor(passeio.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
-                          fill="currentColor" 
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
+                  <div class="flex flex-col mb-4">
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">Nossos Clientes Recomendam:</p>
+                    <div class="flex items-center gap-2">
+                      <div class="flex items-center">
+                        {Array.from({ length: 5 }, (_, i) => (
+                          <svg 
+                            class={`w-4 h-4 ${i < Math.floor(passeio.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
+                            fill="currentColor" 
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                      <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        {passeio.rating} ({passeio.totalRatings} avaliações)
+                      </span>
                     </div>
-                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {passeio.rating} ({passeio.totalRatings} avaliações)
-                    </span>
                   </div>
 
                   <!-- Tags -->
@@ -215,9 +208,58 @@ const passeiosReceptivo = [
   const prevBtn = document.getElementById('prev-btn-passeios-receptivo');
   const nextBtn = document.getElementById('next-btn-passeios-receptivo');
   const indicatorsContainer = document.getElementById('indicators-passeios-receptivo');
+  const filterButtons = document.querySelectorAll('.filter-btn');
   
   // Obter número total de passeios dinamicamente
-  const totalItems = carouselTrack.children.length;
+  let totalItems = carouselTrack.children.length;
+  let visibleItems = [...carouselTrack.children];
+  
+  // Inicializar filtros
+  function initFilters() {
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Atualizar estilo dos botões
+        filterButtons.forEach(btn => {
+          btn.classList.remove('bg-primary-600', 'text-white');
+          btn.classList.add('bg-gray-200', 'text-gray-700', 'dark:bg-gray-700', 'dark:text-gray-300');
+        });
+        
+        button.classList.remove('bg-gray-200', 'text-gray-700', 'dark:bg-gray-700', 'dark:text-gray-300');
+        button.classList.add('bg-primary-600', 'text-white');
+        
+        // Aplicar filtro
+        const category = button.getAttribute('data-category');
+        filterByCategory(category);
+      });
+    });
+  }
+  
+  // Filtrar passeios por categoria
+  function filterByCategory(category) {
+    const cards = carouselTrack.children;
+    
+    // Resetar visibilidade
+    visibleItems = [];
+    
+    for (let i = 0; i < cards.length; i++) {
+      const card = cards[i];
+      const cardCategory = card.querySelector('.bg-primary-600')?.textContent.trim().toUpperCase() || '';
+      
+      if (category === 'todos' || 
+          (category === 'passeios' && cardCategory.includes('PASSEIOS')) ||
+          (category === 'gastronomia' && cardCategory.includes('GASTRONOMIA'))) {
+        card.style.display = '';
+        visibleItems.push(card);
+      } else {
+        card.style.display = 'none';
+      }
+    }
+    
+    // Atualizar carrossel
+    currentSlide = 0;
+    totalItems = visibleItems.length;
+    updateCarousel();
+  }
   
   // Calcular slides por visualização baseado na tela
   function getSlidesPerView() {
@@ -231,7 +273,7 @@ const passeiosReceptivo = [
   // Calcular total de slides necessários
   function getTotalSlides() {
     const slidesPerView = getSlidesPerView();
-    return Math.max(1, Math.ceil(totalItems - slidesPerView + 1));
+    return Math.max(1, Math.ceil(visibleItems.length - slidesPerView + 1));
   }
   
   // Atualizar posição do carrossel
@@ -335,7 +377,8 @@ const passeiosReceptivo = [
     updateCarousel();
   });
   
-  // Inicializar carrossel
+  // Inicializar carrossel e filtros
+  initFilters();
   updateCarousel();
   startAutoPlay();
 </script>

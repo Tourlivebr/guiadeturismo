@@ -68,8 +68,13 @@ const whatsappUrl = `https://wa.me/5554993220552?text=${encodeURIComponent(whats
           <!-- Avaliações e Preço -->
           <div class="flex flex-wrap items-center justify-between mb-8 p-6 bg-gray-50 rounded-xl">
             <div class="flex items-center space-x-4 mb-4 lg:mb-0">
-              <StarRating rating={passeio.avaliacao} />
-              <span class="text-gray-600">({passeio.totalAvaliacoes} avaliações)</span>
+              <div class="flex flex-col">
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-1"><strong>Nossos Clientes Recomendam:</strong></p>
+                <div class="flex items-center">
+                  <StarRating rating={passeio.avaliacao} />
+                  <span class="text-gray-600 ml-2">({passeio.totalAvaliacoes} avaliações)</span>
+                </div>
+              </div>
             </div>
             <div class="text-right">
               <div class="text-gray-600 text-sm mb-1">{passeio.parcelas}</div>
@@ -181,11 +186,14 @@ const whatsappUrl = `https://wa.me/5554993220552?text=${encodeURIComponent(whats
             </a>
             
             <div class="mt-4 text-center">
-              <div class="flex items-center justify-center space-x-1 text-yellow-400 mb-1">
-                <StarRating rating={passeio.avaliacao} />
-              </div>
-              <div class="text-sm text-gray-600">
-                {passeio.avaliacao} de 5 ({passeio.totalAvaliacoes} avaliações)
+              <div class="flex flex-col items-center">
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-1"><strong>Nossos Clientes Recomendam:</strong></p>
+                <div class="flex items-center justify-center space-x-1 text-yellow-400 mb-1">
+                  <StarRating rating={passeio.avaliacao} />
+                </div>
+                <div class="text-sm text-gray-600">
+                  {passeio.avaliacao} de 5 ({passeio.totalAvaliacoes} avaliações)
+                </div>
               </div>
             </div>
           </div>

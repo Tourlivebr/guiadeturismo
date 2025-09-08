@@ -218,11 +218,14 @@ const ingressos = [
                   {ingresso.subtitulo}
                 </p>
                 
-                <div class="flex items-center mb-6">
-                  <StarRating rating={ingresso.avaliacao} />
-                  <span class="ml-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    {ingresso.avaliacao} ({ingresso.totalAvaliacoes} avaliações)
-                  </span>
+                <div class="flex flex-col mb-6">
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-1"><strong>Nossos Clientes Recomendam:</strong></p>
+                  <div class="flex items-center">
+                    <StarRating rating={ingresso.avaliacao} />
+                    <span class="ml-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                      {ingresso.avaliacao} ({ingresso.totalAvaliacoes} avaliações)
+                    </span>
+                  </div>
                 </div>
                 
                 <div class="space-y-3 mb-6">
