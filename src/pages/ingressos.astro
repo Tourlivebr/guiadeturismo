@@ -306,8 +306,8 @@ const ingressos = [
     const cards = Array.from(grid.children);
     
     cards.sort((a, b) => {
-      const priceA = parseFloat(a.querySelector('.text-2xl').textContent.replace('R$ ', '').replace(',', '.'));
-      const priceB = parseFloat(b.querySelector('.text-2xl').textContent.replace('R$ ', '').replace(',', '.'));
+      const priceA = parseFloat(a.querySelector('.text-3xl').textContent.replace('R$ ', '').replace(',', '.'));
+      const priceB = parseFloat(b.querySelector('.text-3xl').textContent.replace('R$ ', '').replace(',', '.'));
       
       switch(sortBy) {
         case 'menor-preco':
