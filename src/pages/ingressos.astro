@@ -102,8 +102,12 @@ const ingressos = [
   
   <main class="pt-20 lg:pt-24">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-24 lg:py-32">
-      <div class="container mx-auto px-4 text-center">
+    <section class="relative text-white py-24 lg:py-32">
+      <!-- Background Image with Fixed Position -->
+      <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('/images/link_ingressos.jpg'); background-attachment: fixed;">
+        <div class="absolute inset-0 bg-black/30"></div>
+      </div>
+      <div class="container relative z-10 mx-auto px-4 text-center">
         <div class="max-w-4xl mx-auto">
           <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">Ingressos e Atrações</h1>
           <p class="text-xl lg:text-2xl text-primary-100 mb-8 leading-relaxed">
