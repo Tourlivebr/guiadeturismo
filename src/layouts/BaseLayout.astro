@@ -1,4 +1,6 @@
 ---
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
 export interface Props {
   title: string;
   description: string;
@@ -77,5 +79,6 @@ const socialImage = new URL(image, baseUrl).toString();
   </head>
   <body class="bg-white text-gray-900 font-sans antialiased">
     <slot />
+    <WhatsAppButton />
   </body>
 </html>
