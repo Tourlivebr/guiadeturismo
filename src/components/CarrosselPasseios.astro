@@ -66,7 +66,7 @@ const passeios = [
     imagem: "/images/monica/monica.jpg",
     avaliacao: 4.14,
     totalAvaliacoes: 7,
-    preco: 21.50,
+    preco: 29.00,
     parcelas: 6,
     slug: "parque-vila-da-monica",
     duracao: 150, // em minutos
@@ -85,7 +85,7 @@ const passeios = [
     imagem: "/images/spaceadventure/space01.webp",
     avaliacao: 4.00,
     totalAvaliacoes: 6,
-    preco: 21.58,
+    preco: 39.00,
     parcelas: 6,
     slug: "parque-space-adventure",
     duracao: 135, // em minutos
@@ -199,9 +199,9 @@ const passeios = [
                   <div>
                     <p class="text-sm text-gray-500 dark:text-gray-400">A partir de</p>
                     <p class="text-2xl font-bold text-gray-900 dark:text-white">
-                      {(passeio.id === 1 || passeio.id === 2) ? `R$ ${passeio.preco.toFixed(2).replace('.', ',')}` : `${passeio.parcelas}x de R$ ${passeio.preco.toFixed(2).replace('.', ',')}`}
+                      {`R$ ${passeio.preco.toFixed(2).replace('.', ',')}`}
                     </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">Pague em até 3x sem juros</p>
+                    
                   </div>
                 </div>
                 <a 
@@ -311,7 +311,7 @@ const passeios = [
       imagem: "/images/monica/monica.jpg",
       avaliacao: 4.14,
       totalAvaliacoes: 7,
-      preco: 21.50,
+      preco: 29.00,
       parcelas: 6,
       slug: "parque-vila-da-monica",
       duracao: 150, // em minutos
@@ -330,7 +330,7 @@ const passeios = [
       imagem: "/images/spaceadventure/space01.webp",
       avaliacao: 4.00,
       totalAvaliacoes: 6,
-      preco: 21.58,
+      preco: 39.00,
       parcelas: 6,
       slug: "parque-space-adventure",
       duracao: 135,
@@ -403,9 +403,9 @@ const passeios = [
                 <div>
                   <p class="text-sm text-gray-500 dark:text-gray-400">A partir de</p>
                   <p class="text-2xl font-bold text-gray-900 dark:text-white">
-                    ${passeio.parcelas}x de R$ ${passeio.preco.toFixed(2).replace('.', ',')}
+                    R$ ${passeio.preco.toFixed(2).replace('.', ',')}
                   </p>
-                  <p class="text-xs text-gray-500 dark:text-gray-400">Pague em até 3x sem juros</p>
+                 
                 </div>
               </div>
               <a 
