@@ -8,7 +8,7 @@ const passeio = {
   titulo: "Mini Mundo",
   subtitulo: "Ingresso",
   categoria: "INGRESSOS E ATRAÇÕES",
-  preco: 45.00,
+  preco: 58.00,
   avaliacao: 4.80,
   totalAvaliacoes: 8,
   descricao: "O Mini Mundo é um parque ao ar livre, formado por réplicas fiéis de obras brasileiras e internacionais. As construções são ricas em detalhes e únicas. Juntas elas compõem nossa cidade 24 vezes menor que o mundo real, animada por milhares de pequenos moradores com suas vidas agitadas.",
@@ -68,6 +68,7 @@ const whatsappUrl = `https://wa.me/5554993220552?text=${encodeURIComponent(whats
               </div>
             </div>
             <div class="text-right">
+              <div class="text-gray-500 text-sm mb-1">A partir de:</div>
               <div class="text-3xl font-bold text-primary-600">R$ {passeio.preco.toFixed(2).replace('.', ',')}</div>
             </div>
           </div>
@@ -177,8 +178,8 @@ const whatsappUrl = `https://wa.me/5554993220552?text=${encodeURIComponent(whats
         <div class="lg:col-span-1">
           <div class="bg-white rounded-xl shadow-lg p-6 sticky top-24">
             <div class="text-center mb-6">
-              <div class="text-3xl font-bold text-primary-600 mb-2">R$ {passeio.preco.toFixed(2).replace('.', ',')}</div>
-              <div class="text-gray-500 text-sm">Pague em até 3x sem juros</div>
+              <div class="text-gray-500 text-sm mb-1">A partir de:</div>
+              <div class="text-3xl font-bold text-primary-600">R$ {passeio.preco.toFixed(2).replace('.', ',')}</div>
             </div>
             
             <div class="space-y-4 mb-6">
