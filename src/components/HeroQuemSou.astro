@@ -2,78 +2,51 @@
 // Nenhuma lógica do servidor necessária
 ---
 
-<section id="quem-sou" class="relative min-h-screen flex items-end justify-center overflow-hidden pt-24 lg:pt-24">
+<section id="quem-sou" class="relative min-h-[50vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden pt-20 lg:pt-24">
   <!-- Background Image -->
   <div 
     class="absolute top-0 left-0 right-0 bottom-0 z-0 bg-cover bg-center animate-zoom-in"
-    style="background-image: url('/images/ft_arruda01.jpg'); background-attachment: fixed;"
+    style="background-image: url('/images/imgfundo.png'); background-attachment: fixed;"
   >
     <!-- Overlay escuro para melhor legibilidade -->
     <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
   </div>
   
   <!-- Conteúdo -->
-  <div class="relative z-10 container mx-auto px-4 pb-20">
+  <div class="relative z-20 container mx-auto px-4 pb-2 lg:pb-4">
     <div class="max-w-4xl mx-auto text-center text-white">
       <!-- Título Principal -->
-      <div class="space-y-6 mb-8">
-        <h1 class="text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+      <div class="space-y-4 lg:space-y-6 mb-6 lg:mb-8">
+        <h1 class="text-3xl lg:text-6xl xl:text-7xl font-bold leading-tight">
           Olá, bem vindo à <span class="text-black" style="color: #0a504c;">Serra Gaúcha</span>
         </h1>
         
-        <p class="text-xl lg:text-2xl leading-relaxed max-w-3xl mx-auto text-gray-100">
-          Sou Filippi Arruda, da TourLive na Serra Gaúcha. Meu propósito é conduzir você com segurança, hospitalidade e amor pela história local — para que cada passeio se torne uma memória viva.
+        <p class="text-lg lg:text-2xl leading-relaxed max-w-3xl mx-auto text-gray-100">
+          Em muitos trajetos, o sinal de celular falha — e aplicativos deixam você na mão.
+          Com a TourLive, seu transporte é garantido, do início ao fim..
         </p>
-      </div>
-      
-      <!-- Botões de Ação -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-        <a 
-          href="#contato" 
-          class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 scroll-smooth shadow-lg hover:shadow-xl transform hover:scale-105"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
-          <span>Entre em contato</span>
-        </a>
-        
-        <a 
-          href="#passeios" 
-          class="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-bold py-4 px-8 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 scroll-smooth shadow-lg hover:shadow-xl transform hover:scale-105"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-          <span>Veja os passeios</span>
-        </a>
-      </div>
-      
-      <!-- Estatísticas -->
-      <div class="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-        <div class="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4">
-          <div class="text-3xl lg:text-4xl font-bold text-primary-400 mb-2">500+</div>
-          <div class="text-sm text-gray-200">Clientes Satisfeitos</div>
-        </div>
-        <div class="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4">
-          <div class="text-3xl lg:text-4xl font-bold text-primary-400 mb-2">5</div>
-          <div class="text-sm text-gray-200">Anos de Experiência</div>
-        </div>
-        <div class="text-center bg-white/10 backdrop-blur-sm rounded-lg p-4">
-          <div class="text-3xl lg:text-4xl font-bold text-primary-400 mb-2">4.9</div>
-          <div class="text-sm text-gray-200">Avaliação Média</div>
-        </div>
       </div>
     </div>
   </div>
   
   <!-- Seta para baixo -->
-  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+  <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10">
     <a href="#passeios" class="text-white hover:text-primary-400 transition-colors animate-bounce">
       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
       </svg>
     </a>
+  </div>
+
+  <!-- Divisor Boleado Suave -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-10">
+    <svg 
+      viewBox="0 0 1200 120" 
+      preserveAspectRatio="none" 
+      class="relative block w-[calc(100%+1.3px)] h-[40px] lg:h-[60px]"
+    >
+      <path d="M0,0 C300,120 900,120 1200,0 L1200,120 L0,120 Z" class="fill-gray-50 dark:fill-gray-900"></path>
+    </svg>
   </div>
 </section>
 

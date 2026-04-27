@@ -87,7 +87,7 @@ const whatsappUrl = `https://wa.me/5554993220552?text=${encodeURIComponent(whats
   
   <main class="pt-20 lg:pt-24">
     <!-- Hero Section -->
-    <section class="relative h-96 lg:h-[500px] overflow-hidden" style={`background-image: url('${passeio.galeria[0]}'); background-attachment: fixed; background-size: cover; background-position: center; background-repeat: no-repeat;`}>
+    <section class="relative h-48 lg:h-[350px] overflow-hidden" style={`background-image: url('${passeio.galeria[0]}'); background-attachment: fixed; background-size: cover; background-position: center; background-repeat: no-repeat;`}>
       <div class="absolute inset-0 bg-black/40"></div>
       <div class="absolute inset-0 flex items-center justify-center">
         <div class="text-center text-white px-4">
@@ -97,6 +97,17 @@ const whatsappUrl = `https://wa.me/5554993220552?text=${encodeURIComponent(whats
           <h1 class="text-3xl lg:text-5xl font-bold mb-4">{passeio.titulo}</h1>
           <p class="text-xl lg:text-2xl text-gray-200">{passeio.subtitulo}</p>
         </div>
+      </div>
+
+      <!-- Divisor Boleado Suave -->
+      <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20">
+        <svg 
+          viewBox="0 0 1200 120" 
+          preserveAspectRatio="none" 
+          class="relative block w-[calc(100%+1.3px)] h-[30px] lg:h-[50px]"
+        >
+          <path d="M0,0 C300,120 900,120 1200,0 L1200,120 L0,120 Z" class="fill-white dark:fill-gray-900"></path>
+        </svg>
       </div>
     </section>
 
